@@ -12,10 +12,10 @@ use TestInt objects to test Counting.countingSort().
 package edu.vtc.spica;
 
 //
-// The following class is used to test countingSort. The countingSort method in class Sorters expects to get a sequence
-// of objects that implement the RangedInt interface. This class is modeled after Integer (I can't extend Integer
-// because that class is final). It provides the necessary methods for RangedInt as well as the "usual" access and
-// comparison methods.
+// The following class is used to test countingSort. The countingSort method in class Sorters
+// expects to get a sequence of objects that implement the RangedInt interface. This class is
+// modeled after Integer (I can't extend Integer because that class is final). It provides the
+// necessary methods for RangedInt as well as the "usual" access and comparison methods.
 //
 
 public class TestInt implements RangedInt {

@@ -5,9 +5,8 @@ LAST REVISION : November 11, 2002
 
 (C) Copyright 2002 by Peter Chapin
 
-This file contains a Java implementation of the heap sort and other heap
-operations. This class implements all the heap operations as static
-methods.
+This file contains a Java implementation of the heap sort and other heap operations. This class
+implements all the heap operations as static methods.
 ************************************************************************* */
 package edu.vtc.spica;
 

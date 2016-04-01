@@ -16,8 +16,8 @@ public class Quick {
 /* The code below uses the Hoare partitioning method for Quick Sort...
 
     //
-    // The following method is used by quickSort to partition the sequence
-    // into two subsequences.
+    // The following method is used by quickSort to partition the sequence into two
+    // subsequences.
     // 
     private static int partition(List theSequence, int p, int r)
     {
@@ -49,8 +49,7 @@ public class Quick {
 
 
     //
-    // The following method implements the guts of the quick sort
-    // algorithm.
+    // The following method implements the guts of the quick sort algorithm.
     // 
     private static void quickSortGuts(List theSequence, int p, int r)
     {
@@ -64,8 +63,8 @@ public class Quick {
 
 
     //
-    // The following method is used by quickSort to partition the sequence
-    // into two subsequences.
+    // The following method is used by quickSort to partition the sequence into two
+    // subsequences.
     // 
     private static int partition(List theSequence, int p, int r)
     {
@@ -90,8 +89,7 @@ public class Quick {
 
 
     //
-    // The following method implements the guts of the quick sort
-    // algorithm.
+    // The following method implements the guts of the quick sort algorithm.
     //
     private static void quickSortGuts(List theSequence, int p, int r)
     {

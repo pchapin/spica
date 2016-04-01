@@ -5,9 +5,8 @@ LAST REVISION : March 14, 2002
 
 (C) Copyright 2002 by Peter Chapin
 
-This file contains a class that implements base64 encoding. This class
-is a FilterOutputStream and can thus be used in a natural way with the
-other Java I/O classes. For example:
+This file contains a class that implements base64 encoding. This class is a FilterOutputStream
+and can thus be used in a natural way with the other Java I/O classes. For example:
 
    FileOutputStream myFile = new FileOutputStream("out.txt");
    Base64OutputStream myEncoder = new Base64OutputStream(myFile);
@@ -37,8 +36,8 @@ public class Base64OutputStream extends java.io.FilterOutputStream {
     }
 
     //
-    // This method does the grunt work of encoding. It assumes that the workspaces were initialized and that count
-    // elements of input contain characters to encode.
+    // This method does the grunt work of encoding. It assumes that the workspaces were
+    // initialized and that count elements of input contain characters to encode.
     //
     private void encode()
     {
@@ -77,9 +76,9 @@ public class Base64OutputStream extends java.io.FilterOutputStream {
     }
 
     //
-    // This is the only write method I must define. The other methods are implemented in FilterOutputStream in terms of
-    // this one. For efficiency it would probably be smart to implement the other methods directly as well. Maybe
-    // another time.
+    // This is the only write method I must define. The other methods are implemented in
+    // FilterOutputStream in terms of this one. For efficiency it would probably be smart to
+    // implement the other methods directly as well. Maybe another time.
     //
     public void write(int b) throws java.io.IOException
     {

@@ -12,14 +12,14 @@ package edu.vtc.spica;
 import java.util.Date;
 
 /**
- * A simple stopwatch-like class. Objects instantiated from Timer are intended act like stopwatches. They accumulate
- * time (in milliseconds) between when they are started and when they are stopped. They can be reset and restarted just
- * like a normal stopwatch.
+ * A simple stopwatch-like class. Objects instantiated from Timer are intended act like
+ * stopwatches. They accumulate time (in milliseconds) between when they are started and when
+ * they are stopped. They can be reset and restarted just like a normal stopwatch.
  *
- * This class depends on the system clock to measure its time intervals. Although it claims to have millisecond
- * resolution, the actual resolution depends on the system clock. For many systems, the actual resolution will be
- * considerably worse than millisecond granularity. Also if the system clock is changed while a Timer is running, the
- * Timer will become confused.
+ * This class depends on the system clock to measure its time intervals. Although it claims to
+ * have millisecond resolution, the actual resolution depends on the system clock. For many
+ * systems, the actual resolution will be considerably worse than millisecond granularity. Also
+ * if the system clock is changed while a Timer is running, the Timer will become confused.
  *
  * @author Peter Chapin
  * */
@@ -49,8 +49,8 @@ public class Timer {
     }
 
     /**
-     * This method resets the Timer. It forces the accumulated time to zero and causes the Timer to stop if it is
-     * already running.
+     * This method resets the Timer. It forces the accumulated time to zero and causes the Timer
+     * to stop if it is already running.
      */
     public void reset()
     {
@@ -70,9 +70,10 @@ public class Timer {
     }
 
     /**
-     * This method starts the Timer by noting the current system time and storing it. Note that time intervals that
-     * cross a date boundary are fully supported. If the Timer is already running when this method is called, it is
-     * restarted. The accumulated time is retained, but any "open" timing interval is lost.
+     * This method starts the Timer by noting the current system time and storing it. Note that
+     * time intervals that cross a date boundary are fully supported. If the Timer is already
+     * running when this method is called, it is restarted. The accumulated time is retained,
+     * but any "open" timing interval is lost.
      */
     public void start()
     {
@@ -95,8 +96,9 @@ public class Timer {
     }
 
     /**
-     * This method returns the current time on the timer (accumulated plus the current interval, if any) in
-     * milliseconds. It is permissible to ask for the time on a Timer that is running.
+     * This method returns the current time on the timer (accumulated plus the current interval,
+     * if any) in milliseconds. It is permissible to ask for the time on a Timer that is
+     * running.
      *
      * @return The total number of milliseconds timed.
      */

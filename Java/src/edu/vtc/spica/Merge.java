@@ -14,15 +14,15 @@ import java.util.List;
 public class Merge {
 
     //
-    // The following method merges two sorted subsequences that are stored in theSequence. The first subsequence runs
-    // from indices [L, M) while the second subsequence runs from indices [M, U). The resulting merged sequence is
-    // stored back in theSequence. Note that this version of merge retains the order of equivalent items and is thus
-    // stable.
+    // The following method merges two sorted subsequences that are stored in theSequence. The
+    // first subsequence runs from indices [L, M) while the second subsequence runs from indices
+    // [M, U). The resulting merged sequence is stored back in theSequence. Note that this
+    // version of merge retains the order of equivalent items and is thus stable.
     // 
     private static void merge(List theSequence, int L, int M, int U)
     {
-        // Create a workspace of an appropriate size. I know that this method will not be called unless U - L is at
-        // least 2.
+        // Create a workspace of an appropriate size. I know that this method will not be called
+        // unless U - L is at least 2.
         // 
         Object[] workspace = new Object[U - L];
 
@@ -66,9 +66,10 @@ public class Merge {
 
 
     //
-    // The following recursive method implements the merge sort algorithm. It works by breaking the sequence into two
-    // sub-sequences of about equal size, sorting each and then using the method above to merge them together. Because
-    // the merge method above is stable, this version of merge sort is also stable.
+    // The following recursive method implements the merge sort algorithm. It works by breaking
+    // the sequence into two sub-sequences of about equal size, sorting each and then using the
+    // method above to merge them together. Because the merge method above is stable, this
+    // version of merge sort is also stable.
     // 
     private static void mergeSortGuts(List theSequence, int L, int U)
     {
@@ -91,8 +92,8 @@ public class Merge {
 
 
     //
-    // The following method is the "front end" method for merge sort that clients can call. It simply calls the
-    // recursive function specifying the full size of the sequence.
+    // The following method is the "front end" method for merge sort that clients can call. It
+    // simply calls the recursive function specifying the full size of the sequence.
     // 
     public static void mergeSort(List theSequence)
     {

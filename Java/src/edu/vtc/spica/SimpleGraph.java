@@ -14,10 +14,10 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 /**
- * This class reads a graph from a simple text file. It is useful for testing. The graph description file is organized
- * in adjacency list format due to its generally more economical use of space. Each line is numbered with a vertex
- * number followed by a colon. After the vertex number comes a space delimited list of (Vertex, Weight) pairs. Here is
- * an example
+ * This class reads a graph from a simple text file. It is useful for testing. The graph
+ * description file is organized in adjacency list format due to its generally more economical
+ * use of space. Each line is numbered with a vertex number followed by a colon. After the
+ * vertex number comes a space delimited list of (Vertex, Weight) pairs. Here is an example
  *
  * <pre>1: (2, 0.344) (4, 1.38) (3, 2.13)</pre>
  */
@@ -37,14 +37,14 @@ public class SimpleGraph extends AbstractGraph<Double> {
         // Read the input file a line at a time.
         while ((line = input.readLine()) != null) {
 
-            // Does this look like a valid line? If not ignore it. This allows me to skip blank lines and treat any line
-            // without a colon as a comment.
+            // Does this look like a valid line? If not ignore it. This allows me to skip blank
+            // lines and treat any line without a colon as a comment.
             // 
             int vertexDelim = line.indexOf(':');
             if (vertexDelim == -1) continue;
 
-            // Extract the "primary" vertex number. Note that the number must start at the beginning of the line and run
-            // up to the colon.
+            // Extract the "primary" vertex number. Note that the number must start at the
+            // beginning of the line and run up to the colon.
             // 
             String vertexNumber = line.substring(0, vertexDelim);
             int u = Integer.parseInt(vertexNumber);

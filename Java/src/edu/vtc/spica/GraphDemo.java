@@ -19,8 +19,8 @@ import edu.vtc.spica.SimpleGraph;
 public class GraphDemo {
 
     /**
-     * This method reads a SimpleGraph from the file testgraph.txt and then executes a few graph algorithms on it. It
-     * interacts with the user to allow the user to try different things.
+     * This method reads a SimpleGraph from the file testgraph.txt and then executes a few graph
+     * algorithms on it. It interacts with the user to allow the user to try different things.
      */
     public static void main(String[] argv)
     {

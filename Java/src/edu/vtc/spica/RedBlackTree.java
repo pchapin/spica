@@ -5,18 +5,17 @@ LAST REVISION : 2003-09-26
 
 (C) Copyright 2003 by Peter C. Chapin
 
-This file contains the definition of a class that implements a Red/Black
-tree. This implementation follows the pseudo-code in the book "Introduction
-to Algorithms" by Cormen, Leiserson, Rivest, and Stein. It even uses the
-rather poor (my opinion) variable names used in the book in order to make
-comparing this code to the book's code easier and more direct.
+This file contains the definition of a class that implements a Red/Black tree. This
+implementation follows the pseudo-code in the book "Introduction to Algorithms" by Cormen,
+Leiserson, Rivest, and Stein. It even uses the rather poor (my opinion) variable names used in
+the book in order to make comparing this code to the book's code easier and more direct.
 ************************************************************************* */
 
 package edu.vtc.spica;
 
 //
-// A red/black tree is a type of sorted set. Extend the helper class (AbstractSet) instead of trying to implement all of
-// the Set interface methods.
+// A red/black tree is a type of sorted set. Extend the helper class (AbstractSet) instead of
+// trying to implement all of the Set interface methods.
 //
 public class RedBlackTree extends java.util.AbstractSet {
 
@@ -24,8 +23,9 @@ public class RedBlackTree extends java.util.AbstractSet {
   private final static int RED   = 1;
   private final static int BLACK = 2;
 
-  // A node in the red/black tree contains these items. I make all of the fields public to simplify access in the
-  // RedBlackTree methods. This is not a major problem because this class is only accessible by RedBlackTree.
+  // A node in the red/black tree contains these items. I make all of the fields public to
+  // simplify access in the RedBlackTree methods. This is not a major problem because this class
+  // is only accessible by RedBlackTree.
   //
   static private class Node {
     public Node   parent = null;
@@ -55,7 +55,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   //           Private Methods
   // ====================================
 
-  // Helper method to do a left rotation around a given node, x. This method assumes that x.right is not nil.
+  // Helper method to do a left rotation around a given node, x. This method assumes that
+  // x.right is not nil.
   //
   private void leftRotate(Node x)
   {
@@ -65,8 +66,8 @@ public class RedBlackTree extends java.util.AbstractSet {
     x.right = y.left;
     y.left.parent = x;
 
-    // Set the new parent properly. Deal with three cases (x was root, x was left child of its parent, x was right child
-    // of its parent).
+    // Set the new parent properly. Deal with three cases (x was root, x was left child of its
+    // parent, x was right child of its parent).
     //
     y.parent = x.parent;
     if (x.parent == nil) {
@@ -85,7 +86,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // Helper method to do a right rotation around a given node, y. This method assumes that y.left is not nil.
+  // Helper method to do a right rotation around a given node, y. This method assumes that
+  // y.left is not nil.
   //
   private void rightRotate(Node y)
   {
@@ -95,8 +97,8 @@ public class RedBlackTree extends java.util.AbstractSet {
     y.left = x.right;
     x.right.parent = y;
 
-    // Set the new parent properly. Deal with three cases (y was root, y was left child of its parent, y was right child
-    // of its parent).
+    // Set the new parent properly. Deal with three cases (y was root, y was left child of its
+    // parent, y was right child of its parent).
     //
     x.parent = y.parent;
     if (y.parent == nil) {
@@ -115,8 +117,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns the minimum node in the subtree rooted at x. This method assumes that there is at
-  // least one node in the subtree.
+  // The following method returns the minimum node in the subtree rooted at x. This method
+  // assumes that there is at least one node in the subtree.
   // 
   private Node minimumNode(Node x)
   {
@@ -128,8 +130,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns the maximum node in the subtree rooted at x. This method assumes that there is at
-  // least one node in the subtree.
+  // The following method returns the maximum node in the subtree rooted at x. This method
+  // assumes that there is at least one node in the subtree.
   // 
   private Node maximumNode(Node x)
   {
@@ -141,8 +143,9 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns the next node in the tree after the given node. It returns nil if the parameter is
-  // already referring to the maximum node in the tree. This method assumes that x is not nil.
+  // The following method returns the next node in the tree after the given node. It returns nil
+  // if the parameter is already referring to the maximum node in the tree. This method assumes
+  // that x is not nil.
   // 
   private Node successorNode(Node x)
   {
@@ -160,8 +163,9 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns the previous node in the tree before the given node. It returns nil if the parameter
-  // is already referring to the minimum node in the tree. This method assumes that x is not nil.
+  // The following method returns the previous node in the tree before the given node. It
+  // returns nil if the parameter is already referring to the minimum node in the tree. This
+  // method assumes that x is not nil.
   // 
   private Node predecessorNode(Node x)
   {
@@ -179,8 +183,9 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following helper method does the raw insertion into the tree. It knows nothing about colors. This method
-  // assumes that the key field of the incoming node has already been filled in.
+  // The following helper method does the raw insertion into the tree. It knows nothing about
+  // colors. This method assumes that the key field of the incoming node has already been filled
+  // in.
   //
   private void treeInsert(Node z)
   {
@@ -226,8 +231,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following helper method does the raw deletion from the tree. It knows nothing about colors. The given node, z,
-  // must refer to an existing node in the tree.
+  // The following helper method does the raw deletion from the tree. It knows nothing about
+  // colors. The given node, z, must refer to an existing node in the tree.
   //
   private void treeDelete(Node z)
   {
@@ -240,8 +245,9 @@ public class RedBlackTree extends java.util.AbstractSet {
     else
       y = successorNode(z);
 
-    // Locate the subtree that needs to be joined back to the main tree. Note that if that y will always have only one
-    // child. If z had two children, y is z's successor which, in that case, would only have one child.
+    // Locate the subtree that needs to be joined back to the main tree. Note that if that y
+    // will always have only one child. If z had two children, y is z's successor which, in that
+    // case, would only have one child.
     // 
     if (y.left != nil)
       x = y.left;
@@ -272,8 +278,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   //           Public Methods
   // ===================================
 
-  // The following method adds an item to the tree. I'm supposed to throw an exception if I don't like the item for some
-  // other reason. I don't like null items.
+  // The following method adds an item to the tree. I'm supposed to throw an exception if I
+  // don't like the item for some other reason. I don't like null items.
   //
   public boolean add(Object item)
   {
@@ -281,8 +287,9 @@ public class RedBlackTree extends java.util.AbstractSet {
     if (item == null)
       throw new IllegalArgumentException();
 
-    // If the item already exists, return false to indicate that I didn't actively add it this time. This is rather
-    // inefficient. I should detect already existing items while I am working to insert a new item.
+    // If the item already exists, return false to indicate that I didn't actively add it this
+    // time. This is rather inefficient. I should detect already existing items while I am
+    // working to insert a new item.
     // 
     if (contains(item)) return false;
 
@@ -290,8 +297,9 @@ public class RedBlackTree extends java.util.AbstractSet {
     Node z = new Node(item, RED);
     treeInsert(z);
 
-    // Keep going until we come to the root or until we no longer have two reds in a row. Notice that inside this loop,
-    // z's parent is red. Since the root is always black, it follows that z.parent.parent is not nil.
+    // Keep going until we come to the root or until we no longer have two reds in a row. Notice
+    // that inside this loop, z's parent is red. Since the root is always black, it follows that
+    // z.parent.parent is not nil.
     //
     while (z.parent.color == RED) {
       Node y;
@@ -352,8 +360,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns a suitable iterator that allows the items stored in the tree to be visited in a
-  // sequence.
+  // The following method returns a suitable iterator that allows the items stored in the tree
+  // to be visited in a sequence.
   // 
   public java.util.Iterator iterator()
   {
@@ -361,7 +369,8 @@ public class RedBlackTree extends java.util.AbstractSet {
   }
 
 
-  // The following method returns true if the tree contains the given object (in the sense of equals()).
+  // The following method returns true if the tree contains the given object (in the sense of
+  // equals()).
   // 
   public boolean contains(Object item)
   {

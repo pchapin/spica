@@ -13,7 +13,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * This class is a wrapper around a number of static methods that provide basic graph algorithms.
+ * This class is a wrapper around a number of static methods that provide basic graph
+ * algorithms.
  */
 public class GraphAlgorithms {
 
@@ -25,8 +26,8 @@ public class GraphAlgorithms {
         private int[] predecessor;
 
         /**
-         * Provide the GraphTree with the necessary information. Some other agent is responsible for computing this
-         * information.
+         * Provide the GraphTree with the necessary information. Some other agent is responsible
+         * for computing this information.
          *
          * @param d Array of distances.
          * @param p Array of predecessors.
@@ -119,9 +120,9 @@ public class GraphAlgorithms {
 
 
     /**
-     * Compute the shortest path from a given source vertex to every other vertex in the graph. This method considers
-     * the weighting on each edge. This method uses the Bellman-Ford algorithm. It returns null if there is no solution
-     * due to a negative weight cycle.
+     * Compute the shortest path from a given source vertex to every other vertex in the graph.
+     * This method considers the weighting on each edge. This method uses the Bellman-Ford
+     * algorithm. It returns null if there is no solution due to a negative weight cycle.
      * 
      * @param theGraph An object storing a graph.
      * @param start The start vertex.
@@ -158,8 +159,8 @@ public class GraphAlgorithms {
                     int v = theEdge.getRemoteVertex();
                     double w = theEdge.getWeight().doubleValue();
 
-                    // If following this edge from u to v is shorter than our current idea of the shortest distance to
-                    // v, update our current idea of that distance!
+                    // If following this edge from u to v is shorter than our current idea of
+                    // the shortest distance to v, update our current idea of that distance!
                     // 
                     if (distance[v] > distance[u] + w) {
                         distance[v] = distance[u] + w;
@@ -177,8 +178,8 @@ public class GraphAlgorithms {
                 int v = theEdge.getRemoteVertex();
                 double w = theEdge.getWeight().doubleValue();
 
-                // If this condition is true now (after the loop above) then there must be a negative weight cycle in
-                // the graph.
+                // If this condition is true now (after the loop above) then there must be a
+                // negative weight cycle in the graph.
                 // 
                 if (distance[v] > distance[u] + w) return null;
             }

@@ -14,9 +14,9 @@ import java.util.List;
 public class Counting {
 
     //
-    // The following method implements counting sort. It expects a sequence of objects that implement the RangedInt
-    // interface. Furthermore every object in the sequence must support the same range (it might be nice to lift this
-    // restriction at some point).
+    // The following method implements counting sort. It expects a sequence of objects that
+    // implement the RangedInt interface. Furthermore every object in the sequence must support
+    // the same range (it might be nice to lift this restriction at some point).
     //
     public static void countingSort(List theSequence)
     {

@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Class implementing the Graph interface in the most basic way possible. A "real" graph class would subclass this
- * implementation and provide application specific material. This implementation stores the graph in adjacency list
- * format, and is not synchronized.
+ * Class implementing the Graph interface in the most basic way possible. A "real" graph class
+ * would subclass this implementation and provide application specific material. This
+ * implementation stores the graph in adjacency list format, and is not synchronized.
  *
  * @param <W> The type used for edge weights in the graph.
  */
@@ -27,8 +27,8 @@ public class AbstractGraph<W> implements Graph<W> {
 
     
     /**
-     * Adds a new vertex. If the vertex already exists, this method has no effect. It will create any intermediate
-     * vertices as necessary.
+     * Adds a new vertex. If the vertex already exists, this method has no effect. It will
+     * create any intermediate vertices as necessary.
      *
      * @param u The vertex number to add.
      */
@@ -37,8 +37,8 @@ public class AbstractGraph<W> implements Graph<W> {
         // If this vertex already exists, we are done.
         if (u < vertexList.size()) return;
 
-        // Otherwise create the new vertex and all intermediate vertices (if necessary). This assumes that the vertices
-        // of a graph are numbered contiguously.
+        // Otherwise create the new vertex and all intermediate vertices (if necessary). This
+        // assumes that the vertices of a graph are numbered contiguously.
         // 
         for (int i = u - vertexList.size() + 1; i > 0; i--) {
             vertexList.add(new ArrayList<EdgeDescriptor<W>>());
@@ -47,10 +47,10 @@ public class AbstractGraph<W> implements Graph<W> {
 
     
     /**
-     * Adds a new, directed edge. This method makes sure that both vertices at either end exist ahead of time. If the
-     * edge is intended to be undirected, you must explicitly add two edges with one in each direction. There is no
-     * prohibition against adding multiple edges connecting the same two vertices (for example, perhaps using different
-     * weights).
+     * Adds a new, directed edge. This method makes sure that both vertices at either end exist
+     * ahead of time. If the edge is intended to be undirected, you must explicitly add two
+     * edges with one in each direction. There is no prohibition against adding multiple edges
+     * connecting the same two vertices (for example, perhaps using different weights).
      *
      * @param u The source vertex for the edge. It need not exist in the graph ahead of time.
      * @param v The destination vertex for the edge. It need not exist in the graph ahead of time.

@@ -16,13 +16,14 @@ import java.text.NumberFormat;
 import java.util.Random;
 
 /**
- * This class contains a main method that generates a graph by randomly connecting a large number of vertices.
+ * This class contains a main method that generates a graph by randomly connecting a large
+ * number of vertices.
  */
 public class GraphCreate {
 
     /**
-     * This method computes a random graph. It interacts with the user to obtain the size of the graph to create and the
-     * name of the file where the graph description should be written.
+     * This method computes a random graph. It interacts with the user to obtain the size of the
+     * graph to create and the name of the file where the graph description should be written.
      */
     public static void main(String[] argv)
     {
@@ -57,8 +58,8 @@ public class GraphCreate {
                 return;
             }
 
-            // To support negative weight edges a different method needs to be used to mark undefined connections in the
-            // edge matrix.
+            // To support negative weight edges a different method needs to be used to mark
+            // undefined connections in the edge matrix.
             //
             if (lowerBound < 0.0) {
                 System.out.println("Negative weight edges not supported!");

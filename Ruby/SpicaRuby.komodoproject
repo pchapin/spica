@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
 <project id="74b4e829-61f4-4116-bac1-3c19e06bbd32" kpf_version="5" name="SpicaRuby.komodoproject">
+<preference-set idref="74b4e829-61f4-4116-bac1-3c19e06bbd32" id="project" preftype="project">
+  <long id="prefs_version">1</long>
+</preference-set>
 </project>

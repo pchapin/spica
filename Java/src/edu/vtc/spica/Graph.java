@@ -12,10 +12,11 @@ package edu.vtc.spica;
 import java.util.Iterator;
 
 /**
- * General purpose graph interface. This interface requires that vertices be numbered sequentially from 0 to N-1 without
- * any missing values. This requirement allows the methods that work with a graph to store vertex information in a
- * simple array. If vertices are to be labeled in some more elaborate way, that must be done outside of this interface.
- * Note that this interface allows for multi-graphs.
+ * General purpose graph interface. This interface requires that vertices be numbered
+ * sequentially from 0 to N-1 without any missing values. This requirement allows the methods
+ * that work with a graph to store vertex information in a simple array. If vertices are to be
+ * labeled in some more elaborate way, that must be done outside of this interface. Note that
+ * this interface allows for multi-graphs.
  *
  * This interface is intended to mimic the organization of Java's standard collection classes.
  *
@@ -24,8 +25,8 @@ import java.util.Iterator;
 public interface Graph<W> {
 
     /**
-     * Information about a graph edge. This class contains the information that describes an edge in a vertex's
-     * adjacency list.
+     * Information about a graph edge. This class contains the information that describes an
+     * edge in a vertex's adjacency list.
      *
      * @param <W> The type used for edge weights in the graph.
      */
@@ -73,10 +74,11 @@ public interface Graph<W> {
     public int numVertices();
 
     /**
-     * Returns an object that allows you to iterate over the edges of a given vertex. Each call of the iterator's next()
-     * method returns an object that can be cast into an EdgeDescriptor containing the vertex number of an adjacent
-     * vertex and the weight of the corresponding edge. It is permissible to have several adjacency list scans open at
-     * once. This method runs in O(1) time. The iterator's hasNext() and next() methods also run in O(1) time.
+     * Returns an object that allows you to iterate over the edges of a given vertex. Each call
+     * of the iterator's next() method returns an object that can be cast into an EdgeDescriptor
+     * containing the vertex number of an adjacent vertex and the weight of the corresponding
+     * edge. It is permissible to have several adjacency list scans open at once. This method
+     * runs in O(1) time. The iterator's hasNext() and next() methods also run in O(1) time.
      *
      * @param u The vertex for which you want the adjacency list.
      */
