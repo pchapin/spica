@@ -1,0 +1,7 @@
+-od"bin"
+-of"bin\SpicaD.exe"
+
+-I""
+
+"src\tree.d"
+"src\tree_driver.d"

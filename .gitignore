@@ -1,0 +1,39 @@
+# Visual Studio generated files.
+Debug
+Release
+Spica.sdf
+.vs
+
+# Code::Blocks generated files.
+bin
+obj
+*.depend
+*.layout
+
+# depend generated files.
+depend.out
+
+# Doxygen generated files.
+api
+
+# Open Watcom generated files.
+owbuild
+*.obj
+*.lb1
+*.mk1
+C/SpicaC.lib
+Cpp/SpicaCpp.lib
+
+# LLVM generated files.
+*.bc
+
+# gcc generated files.
+*.o
+C/libSpicaC.a
+C/check/CheckC
+Cpp/libSpicaCpp.a
+
+# LaTeX generated files.
+*.aux
+*.log
+*.pdf

@@ -1,0 +1,10 @@
+
+p.notice {
+  border: 2px solid black;
+  margin: 0.25in;
+  padding: 5px;
+}
+
+.filename { 
+  font-family: monospace;
+}
