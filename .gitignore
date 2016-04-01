@@ -18,8 +18,10 @@ api
 
 # Open Watcom generated files.
 owbuild
+*.err
 *.obj
 *.lb1
+*.mk
 *.mk1
 C/SpicaC.lib
 Cpp/SpicaCpp.lib

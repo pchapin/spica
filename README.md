@@ -2,9 +2,9 @@
 Spica
 =====
 
-Spica is a collection of libraries of algoritms and data structures written in various
-languages. It is intended primarily to be educational but it is also my hope that some of the
-components developed here could be useful in real programs.
+Spica is a collection of libraries of algoritms and data structures (and some additional
+components) written in various languages. It is intended primarily to be educational but it is
+also my hope that some of the components developed here could be useful in real programs.
 
 This library is (C) Copyright Peter C. Chapin. However it is my intention to distribute this
 library, and its associated documentation under the terms of the Lesser GNU Public License and

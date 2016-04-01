@@ -33,15 +33,11 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 			<Add directory=".." />
 		</Compiler>
-		<Linker>
-			<Add library="boost_regex" />
-			<Add directory="$(#boost.lib)" />
-		</Linker>
 		<Unit filename="BinomialHeap_tests.cpp" />
 		<Unit filename="BoundedList_tests.cpp" />
 		<Unit filename="Graph_tests.cpp" />
@@ -54,6 +50,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
