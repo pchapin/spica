@@ -214,8 +214,8 @@ namespace spica {
     BoundedList< T >::BoundedList( size_type max_count )
     {
         std::unique_ptr<char[]> temp_raw( new char[(max_count + 1) * sizeof(T)] );
-        std::unique_ptr<size_type> temp_next( new size_type[max_count+1] );
-        std::unique_ptr<size_type> temp_previous( new size_type[max_count+1] );
+        std::unique_ptr<size_type[]> temp_next( new size_type[max_count+1] );
+        std::unique_ptr<size_type[]> temp_previous( new size_type[max_count+1] );
 
         raw      = reinterpret_cast<T *>( temp_raw.release( ) );
         next     = temp_next.release( );
@@ -252,7 +252,7 @@ namespace spica {
         // Release the memory.
         delete [] previous;
         delete [] next;
-        delete [] reinterpret_cast< char * >( raw );
+        delete [] reinterpret_cast<char *>( raw );
     }
 
 
