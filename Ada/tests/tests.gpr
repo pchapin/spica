@@ -9,7 +9,7 @@ project Tests is
    for Main use ("tests.adb");
    type Build_Type is
       ("Release", "Debug");
-   Build : Build_Type := external ("BUILD");
+   Build : Build_Type := external ("BUILD", "Debug");
 
    case Build is
 
@@ -48,10 +48,10 @@ project Tests is
             case Os is
 
                when "Unix" =>
-                  for Default_Switches ("ada") use ("-gnato", "-fstack-check", "-gnatwcijmrz", "-O2");
+                  for Default_Switches ("ada") use ("-gnatwcijmrz", "-O2");
 
                when "Windows_NT" =>
-                  for Default_Switches ("ada") use ("-gnato", "-fstack-check", "-gnatwcijmrz", "-O2");
+                  for Default_Switches ("ada") use ("-gnatwcijmrz", "-O2");
             end case;
 
          when "Debug" =>
@@ -59,10 +59,10 @@ project Tests is
             case Os is
 
                when "Unix" =>
-                  for Default_Switches ("ada") use ("-gnato", "-fstack-check", "-g", "-gnata", "-gnatwcijmrz");
+                  for Default_Switches ("ada") use ("-g", "-gnata", "-gnatwcijmrz");
 
                when "Windows_NT" =>
-                  for Default_Switches ("ada") use ("-gnato", "-fstack-check", "-g", "-gnata", "-gnatwcijmrz");
+                  for Default_Switches ("ada") use ("-g", "-gnata", "-gnatwcijmrz");
             end case;
       end case;
    end Compiler;

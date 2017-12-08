@@ -47,7 +47,7 @@ private
          Right_Child      : Tree_Node_Access := null;
       end record;
 
-   type Tree is new Ada.Finalization.Limited_Controlled and Trees_Package.Tree with
+   type Tree is limited new Ada.Finalization.Limited_Controlled and Trees_Package.Tree with
       record
          Root  : Tree_Node_Access := null;
          Count : Natural          := 0;

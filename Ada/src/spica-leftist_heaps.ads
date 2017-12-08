@@ -48,7 +48,7 @@ private
          Right_Child      : Heap_Node_Access := null;
       end record;
 
-   type Heap is new Ada.Finalization.Limited_Controlled and Heaps_Package.Heap with
+   type Heap is limited new Ada.Finalization.Limited_Controlled and Heaps_Package.Heap with
       record
          Root : Heap_Node_Access;
       end record;

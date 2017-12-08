@@ -1,13 +1,12 @@
 ---------------------------------------------------------------------------
 -- FILE    : spica-double_list.adb
 -- SUBJECT : Package providing a bounded doubly linked list.
--- AUTHOR  : (C) Copyright 2012 by Peter C. Chapin
+-- AUTHOR  : (C) Copyright 2017 by Peter C. Chapin
 --
 -- Please send comments or bug reports to
 --
---      Peter C. Chapin <PChapin@vtc.vsc.edu>
+--      Peter C. Chapin <chapinp@acm.org>
 ---------------------------------------------------------------------------
--- pragma SPARK_Mode(On);
 
 package body Spica.Double_List
 with
