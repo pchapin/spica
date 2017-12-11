@@ -22,12 +22,15 @@ is
    procedure Clear
      with
        Global => (Output => Internal_List),
-       Depends => (Internal_List => null);
+       Depends => (Internal_List => null),
+       Post => Size = 0;
 
    procedure Insert_Before(It : in Iterator; Item : in Element_Type; Status : out Status_Type)
      with
        Global => (In_Out => Internal_List),
-       Depends => (Internal_List =>+ (It, Item), Status => Internal_List);
+       Depends => (Internal_List =>+ (It, Item), Status => Internal_List),
+       Post => (if Size = Max_Size then Status = Insufficient_Space else Status = Success) and
+               Size'Old = (if Size = Max_Size then Size else Size - 1);
 
    function Front return Iterator
      with

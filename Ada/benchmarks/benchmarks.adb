@@ -1,11 +1,11 @@
 ---------------------------------------------------------------------------
 -- FILE    : benchmarks.adb
--- SUBJECT : The main program for the Allegra benchmark tests.
--- AUTHOR  : (C) Copyright 2012 by Peter C. Chapin
+-- SUBJECT : The main program for the Spica/Ada benchmark tests.
+-- AUTHOR  : (C) Copyright 2017 by Peter C. Chapin
 --
 -- Please send comments or bug reports to
 --
---      Peter C. Chapin <PChapin@vtc.vsc.edu>
+--      Peter C. Chapin <chapinp@acm.org>
 ---------------------------------------------------------------------------
 with Ada.Text_IO;
 
