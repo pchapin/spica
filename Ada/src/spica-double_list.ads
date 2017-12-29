@@ -29,8 +29,8 @@ is
      with
        Global => (In_Out => Internal_List),
        Depends => (Internal_List =>+ (It, Item), Status => Internal_List),
-       Post => (if Size = Max_Size then Status = Insufficient_Space else Status = Success) and
-               Size'Old = (if Size = Max_Size then Size else Size - 1);
+       Post => (if Size'Old = Max_Size then Status = Insufficient_Space else Status = Success) and
+               Size'Old = (if Size'Old = Max_Size then Size else Size - 1);
 
    function Front return Iterator
      with

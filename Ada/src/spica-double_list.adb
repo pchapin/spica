@@ -53,16 +53,12 @@ is
        Refined_Global => (Input => Free_List,
                           In_Out => (Memory, Count, Free)),
        Refined_Depends => (Memory =>+ (Count, It, Item, Free),
-                           (Count, Status) => Count, Free =>+ (Count, Free_List)),
-       Refined_Post =>
-         (if Count = Max_Size then Status = Insufficient_Space else Status = Success) and
-         Count = (if Count = Max_Size then Count'Old else Count'Old + 1)
+                           (Count, Status) => Count, Free =>+ (Count, Free_List))
    is
       New_Pointer : Index_Type;
    begin
       if Count = Max_Size then
          Status := Insufficient_Space;
-         pragma Assert(Status = Insufficient_Space);
       else
          Status := Success;
 
@@ -77,9 +73,7 @@ is
 
          -- Adjust count.
          Count := Count + 1;
-         pragma Assert(Status = Success);
       end if;
-      pragma Assert(if Count = Max_Size then Status = Insufficient_Space else Status = Success);
    end Insert_Before;
 
 
