@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- FILE    : spica-double_list.adb
 -- SUBJECT : Package providing a bounded doubly linked list.
--- AUTHOR  : (C) Copyright 2017 by Peter C. Chapin
+-- AUTHOR  : (C) Copyright 2018 by Peter C. Chapin
 --
 -- Please send comments or bug reports to
 --
@@ -27,6 +27,13 @@ is
    Count     : Index_Type;  -- Number of items on the list.
    Free_List : Free_Array;  -- Maps available nodes.
    Free      : Index_Type;  -- Points at the head of the free list.
+
+
+   function Size return Natural is (Count)
+     with
+       Refined_Global => (Input => Count),
+       Refined_Post => Size'Result = Count;
+
 
    procedure Clear
      with
@@ -86,41 +93,32 @@ is
    end Front;
 
 
-   function Back return Iterator is
+   function Back return Iterator
+     with
+       Refined_Global => (Input => Memory)
+   is
    begin
-      return (Pointer => 0);
+      return (Pointer => Memory(0).Previous);
    end Back;
 
 
-   procedure Forward(It : in out Iterator; Status : out Status_Type)
+   procedure Forward(It : in out Iterator)
      with
        Refined_Global => (Input => Memory),
-       Refined_Depends => (It =>+ Memory, Status => It)
+       Refined_Depends => (It =>+ Memory)
    is
    begin
-      -- If already off the end we can't go forward.
-      if It.Pointer = 0 then
-         Status := Invalid_Step;
-      else
-         Status := Success;
-         It.Pointer := Memory(It.Pointer).Next;
-      end if;
+      It.Pointer := Memory(It.Pointer).Next;
    end Forward;
 
 
-   procedure Backward(It : in out Iterator; Status : out Status_Type)
+   procedure Backward(It : in out Iterator)
      with
        Refined_Global => (Input => Memory),
-       Refined_Depends => (It =>+ Memory, Status => (It, Memory))
+       Refined_Depends => (It =>+ Memory)
    is
    begin
-      -- If already at the beginning we can't go backward.
-      if It.Pointer = Memory(0).Next then
-         Status := Invalid_Step;
-      else
-         Status := Success;
-         It.Pointer := Memory(It.Pointer).Previous;
-      end if;
+      It.Pointer := Memory(It.Pointer).Previous;
    end Backward;
 
 
@@ -130,44 +128,24 @@ is
    end Is_Dereferencable;
 
 
-   procedure Get_Value(It : Iterator; Item : out Element_Type; Status : out Status_Type)
+   procedure Get_Value(It : Iterator; Item : out Element_Type)
      with
        Refined_Global => (Input => Memory),
-       Refined_Depends => (Item => (It, Memory), Status => It)
+       Refined_Depends => (Item => (It, Memory))
    is
    begin
-      if It.Pointer = 0 then
-         Status := Bad_Iterator;
-         Item := Default_Element;
-      else
-         Status := Success;
-         Item := Memory(It.Pointer).Value;
-      end if;
+      Item := Memory(It.Pointer).Value;
    end Get_Value;
 
 
-   procedure Put_Value(It : Iterator; Item : in Element_Type; Status : out Status_Type)
+   procedure Put_Value(It : Iterator; Item : in Element_Type)
      with
        Refined_Global => (In_Out => Memory),
-       Refined_Depends => (Memory =>+ (It, Item), Status => It)
+       Refined_Depends => (Memory =>+ (It, Item))
    is
    begin
-      if It.Pointer = 0 then
-         Status := Bad_Iterator;
-      else
-         Status := Success;
-         Memory(It.Pointer).Value := Item;
-      end if;
+      Memory(It.Pointer).Value := Item;
    end Put_Value;
 
-
-   function Size return Natural
-     with
-       Refined_Global => (Input => Count),
-       Refined_Post => Size'Result = Count
-   is
-   begin
-      return Count;
-   end Size;
 
 end Spica.Double_List;
