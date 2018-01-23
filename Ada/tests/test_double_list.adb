@@ -9,25 +9,18 @@
 ---------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
-with Ada.Text_IO; use Ada.Text_IO;
-
-with Spica.Double_List;
 with Assertions;
 
 package body Test_Double_List is
    use Assertions;
 
-   package Integer_Double_List is
-     new Spica.Double_List(Element_Type => Integer, Max_Size => 16, Default_Element => 0);
-   use Integer_Double_List;
-
-   subtype Test_Index_Type is Integer range 1 .. 10;
-   Test_Sequence : array(Test_Index_Type) of Integer :=
-     (10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
-
-
    -- Run the tests.
    procedure Execute is
+
+      subtype Test_Index_Type is Integer range 1 .. 10;
+      Test_Sequence : array(Test_Index_Type) of Integer :=
+        (10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+
       It     : Integer_Double_List.Iterator;
       Status : Integer_Double_List.Status_Type;
       Index  : Test_Index_Type;
