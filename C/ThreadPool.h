@@ -36,9 +36,9 @@ void ThreadPool_initialize( ThreadPool *self );
 
 //! Cleans up the thread pool pointed at by 'self.'
 /*!
- * The pool kills all threads immediately regardless of what they are doing. Users should be sure to collect
- * the work result from every thread before destroying the pool to be sure that all threads have completed
- * their tasks.
+ * The pool kills all threads immediately regardless of what they are doing. Users should be
+ * sure to collect the work result from every thread before destroying the pool to be sure that
+ * all threads have completed their tasks.
  */
 void ThreadPool_destroy( ThreadPool *self );
 
@@ -47,9 +47,10 @@ int ThreadPool_count( ThreadPool *self );
 
 //! Directs a thread from the pool to start some work.
 /*!
- * Threads that have completed but that have not yet had their work result picked up are not available for more
- * work. Do not call this function more times than there are threads in the pool without picking up the work
- * result from previous tasks first. If you do so the calling thread will block indefinitely.
+ * Threads that have completed but that have not yet had their work result picked up are not
+ * available for more work. Do not call this function more times than there are threads in the
+ * pool without picking up the work result from previous tasks first. If you do so the calling
+ * thread will block indefinitely.
  *
  * \param work_function Pointer to a function the thread is to execute.
  * \param arg Pointer to an object containing the thread argument(s).
@@ -59,13 +60,13 @@ threadid_t ThreadPool_start( ThreadPool *self, void *( *work_function )( void * 
 
 //! Pick up the work result from a particular thread.
 /*!
- * The user should pick up the work result of every unit of work dispatched before destroying the pool to ensure
- * that threads are not canceled before their tasks are completed. Even if the expected result is NULL, this
- * function should still be called to retrieve it.
+ * The user should pick up the work result of every unit of work dispatched before destroying
+ * the pool to ensure that threads are not canceled before their tasks are completed. Even if
+ * the expected result is NULL, this function should still be called to retrieve it.
  *
- * \param ID The pool-relative ID number of the thread from which the last work result is needed. If that thread
- * has not completed its task (or has never been given a task) this function suspends until a new work result is
- * ready.
+ * \param ID The pool-relative ID number of the thread from which the last work result is
+ * needed. If that thread has not completed its task (or has never been given a task) this
+ * function suspends until a new work result is ready.
  *
  * \return The work result as returned by the thread function.
  */
