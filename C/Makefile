@@ -4,6 +4,7 @@
 
 CC=gcc
 CCFLAGS=-Wall -c -O
+check: CCFLAGS=-Wall -c -fprofile-arcs -ftest-coverage
 LINK=ar
 LINKFLAGS=rc
 SOURCES=hash.c        \
@@ -21,6 +22,8 @@ LIBRARY=libSpicaC.a
 
 $(LIBRARY):	$(OBJECTS)
 	$(LINK) $(LINKFLAGS) -o $@ $(OBJECTS)
+
+check:	$(LIBRARY)
 
 # File Dependencies
 ###################
@@ -46,4 +49,4 @@ Vector3.o:	Vector3.c Vector3.h
 # Additional Rules
 ##################
 clean:
-	rm -f *.bc *.o $(LIBRARY) *.s *.ll *~
+	rm -f *.bc *.o $(LIBRARY) *.s *.ll *.gcov *.gcda *.gcno *~

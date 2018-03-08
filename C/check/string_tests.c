@@ -10,7 +10,7 @@ void str_construction( void )
     string s1;
     int    error_code;
 
-    error_code = string_init( &s1 );
+    error_code = string_construct( &s1 );
     CU_ASSERT( error_code == 0 );
 
     // The tests below need improvement. They should carefully exercise both the cases where a
@@ -35,7 +35,7 @@ void str_prepend( void )
 {
     string s1;
 
-    string_init( &s1 );
+    string_construct( &s1 );
     string_copycharp( &s1, "Hello" );
     string_prependcharp( &s1, "World" );
     CU_ASSERT( strcmp( string_getcharp( &s1 ), "WorldHello" ) == 0 );
@@ -54,7 +54,7 @@ void str_at( void )
 {
     string s1;
 
-    string_init( &s1 );
+    string_construct( &s1 );
     string_copycharp( &s1, "Hello" );
     string_putcharat( &s1, 'x', 0 );
     CU_ASSERT( strcmp( string_getcharp( &s1 ), "xello" ) == 0 );
