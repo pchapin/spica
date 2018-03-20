@@ -4,6 +4,7 @@
 
 CC=gcc
 CCFLAGS=-Wall -c -O
+debug: CCFLAGS=-Wall -g -O0 -c
 LINK=ar
 LINKFLAGS=rc
 SOURCES=hash.c        \
@@ -22,13 +23,15 @@ LIBRARY=libSpicaC.a
 $(LIBRARY):	$(OBJECTS)
 	$(LINK) $(LINKFLAGS) -o $@ $(OBJECTS)
 
+debug:	$(LIBRARY)
+
 # File Dependencies
 ###################
 
 # Module dependencies -- Produced with 'depend' on Sun Jul 14 15:55:05 2013
 
 
-hash.o:	hash.c hash.h 
+hash.o:		hash.c hash.h 
 
 Interval.o:	Interval.c Interval.h 
 
@@ -38,7 +41,7 @@ ThreadPool.o:	ThreadPool.c ThreadPool.h
 
 Timer.o:	Timer.c Timer.h environ.h 
 
-Tree.o:	Tree.c Tree.h 
+Tree.o:		Tree.c Tree.h 
 
 Vector3.o:	Vector3.c Vector3.h 
 
