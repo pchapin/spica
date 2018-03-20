@@ -9,6 +9,18 @@
 ---------------------------------------------------------------------------
 pragma SPARK_Mode(On);
 
+with Spica.Double_List;
+
 package Test_Double_List is
-   procedure Execute;
+
+   package Integer_Double_List is
+     new Spica.Double_List(Element_Type => Integer, Max_Size => 16, Default_Element => 0);
+   use Integer_Double_List;
+
+
+   procedure Execute
+     with
+       Global => (Output => Integer_Double_List.Internal_List),
+       Depends => (Integer_Double_List.Internal_List => null);
+
 end Test_Double_List;

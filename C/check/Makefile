@@ -5,7 +5,7 @@
 CC=gcc
 CFLAGS=-c -I..
 LD=gcc
-LDFLAGS=-lpthread -lcunit -lncurses
+LDFLAGS=-lpthread -lcunit -lncurses -lgcov
 SOURCES=main.c string_tests.c thread_pool_tests.c tree_tests.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=CheckC
@@ -19,9 +19,9 @@ $(EXECUTABLE):	$(OBJECTS)
 # File Dependencies
 ###################
 
-main.o:		main.c
+main.o:			main.c
 
-string_tests.o:	string_tests.c string_tests.h ../str.h
+string_tests.o:		string_tests.c string_tests.h ../str.h
 
 thread_pool_tests.o:	thread_pool_tests.c thread_pool_tests.h ../ThreadPool.h
 

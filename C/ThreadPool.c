@@ -33,8 +33,8 @@ struct ThreadInformation {
 
 //! Function that dispatches worker threads.
 /*!
- * This function is executed by each thread. It waits for work to do. When a ThreadPool is not busy, all its
- * worker threads are blocked waiting for work here.
+ * This function is executed by each thread. It waits for work to do. When a ThreadPool is not
+ * busy, all its worker threads are blocked waiting for work here.
  */
 static void *dispatching_function( void *arg )
 {
@@ -45,13 +45,14 @@ static void *dispatching_function( void *arg )
     while( 1 ) {
         pthread_mutex_lock( &my_information->lock );
 
-        // It is necessary to check fresh_result in the loop condition below so that when the thread finishes
-        // doing some work it doesn't immediately think there is more work. The value of fresh_work is TRUE
-        // until the result is picked up; that condition is used to indicate which threads are currently active.
-        // See threadpool_start().
+        // It is necessary to check fresh_result in the loop condition below so that when the
+        // thread finishes doing some work it doesn't immediately think there is more work. The
+        // value of fresh_work is TRUE until the result is picked up; that condition is used to
+        // indicate which threads are currently active. See threadpool_start().
         //
-        // Thread termination is handled by a 'die' flag to ensure that the terminated thread is actually finished
-        // using the other synchronization primitives before they are cleaned up. See thread_information_destroy().
+        // Thread termination is handled by a 'die' flag to ensure that the terminated thread is
+        // actually finished using the other synchronization primitives before they are cleaned
+        // up. See thread_information_destroy().
         //
         while( (my_information->fresh_work   == FALSE ||
                 my_information->fresh_result == TRUE) && !my_information->die )

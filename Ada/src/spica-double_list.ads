@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------
 -- FILE    : spica-double_list.ads
 -- SUBJECT : Package providing a bounded doubly linked list.
--- AUTHOR  : (C) Copyright 2017 by Peter C. Chapin
+-- AUTHOR  : (C) Copyright 2018 by Peter C. Chapin
 --
 -- Please send comments or bug reports to
 --
@@ -16,7 +16,7 @@ generic
 package Spica.Double_List
   with Abstract_State => Internal_List
 is
-   type Status_Type is (Success, Invalid_Step, Bad_Iterator, Insufficient_Space);
+   type Status_Type is (Success, Insufficient_Space);
    type Iterator is private;
 
    procedure Clear
@@ -29,8 +29,9 @@ is
      with
        Global => (In_Out => Internal_List),
        Depends => (Internal_List =>+ (It, Item), Status => Internal_List),
-       Post => (if Size'Old = Max_Size then Status = Insufficient_Space else Status = Success) and
-               Size'Old = (if Size'Old = Max_Size then Size else Size - 1);
+       Post =>
+         (if Size'Old = Max_Size then Status = Insufficient_Space else Status = Success) and
+         Size'Old = (if Size'Old = Max_Size then Size else Size - 1);
 
    function Front return Iterator
      with
@@ -38,31 +39,38 @@ is
 
    function Back return Iterator
      with
-       Global => null;
+       Global => (Input => Internal_List);
 
-   procedure Forward(It : in out Iterator; Status : out Status_Type)
+   procedure Forward(It : in out Iterator)
      with
        Global => (Input => Internal_List),
-       Depends => (It =>+ Internal_List, Status => It);
+       Depends => (It =>+ Internal_List),
+       Pre => Is_Dereferencable(It);
 
-   procedure Backward(It : in out Iterator; Status : out Status_Type)
+   procedure Backward(It : in out Iterator)
      with
        Global => (Input => Internal_List),
-       Depends => (It =>+ Internal_List, Status => (It, Internal_List));
+       Depends => (It =>+ Internal_List),
+       Pre => Is_Dereferencable(It);
 
    function Is_Dereferencable(It : Iterator) return Boolean
      with
        Global => null;
 
-   procedure Get_Value(It : in Iterator; Item : out Element_Type; Status : out Status_Type)
+   function Is_Null(It : Iterator) return Boolean is (not Is_Dereferencable(It))
+     with Inline;
+
+   procedure Get_Value(It : in Iterator; Item : out Element_Type)
      with
        Global => (Input => Internal_List),
-       Depends => (Item => (It, Internal_List), Status => It);
+       Depends => (Item => (It, Internal_List)),
+       Pre => Is_Dereferencable(It);
 
-   procedure Put_Value(It : in Iterator; Item : in Element_Type; Status : out Status_Type)
+   procedure Put_Value(It : in Iterator; Item : in Element_Type)
      with
        Global => (In_Out => Internal_List),
-       Depends => (Internal_List =>+ (It, Item), Status => It);
+       Depends => (Internal_List =>+ (It, Item)),
+       Pre => Is_Dereferencable(It);
 
    function Size return Natural
      with
