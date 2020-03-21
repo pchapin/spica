@@ -30,7 +30,7 @@ If you wish to contact me regarding this library, and I welcome comments, bug re
 contributions, etc, my email addresses are, in order of preference,
 
 Peter C. Chapin  
-PChapin@vtc.vsc.edu
+chapinp@acm.org  
 
 P.S. Spica, pronounced "spi-kah" is the brightest star in the constellation Virgo. I chose that
 name because it was short enough to be reasonable to type as a namespace prefix, wasn't too
