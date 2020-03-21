@@ -1,7 +1,7 @@
-with Assertions;
+with Ada.Assertions;
 
 package body Generic_Heap_Tests is
-   use Assertions;
+   use Ada.Assertions;
 
    procedure Test_Heap_Constructor is
       H : Heap;

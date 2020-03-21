@@ -325,7 +325,7 @@ package body Spica.Very_Longs is
    function "/"(L, R : Very_Long) return Very_Long is
       Result: Very_Long;
    begin
-      raise Not_Implemented;
+      raise Program_Error with "Not Implemented: ""/""";
       return Result;
    end "/";
 
@@ -333,7 +333,7 @@ package body Spica.Very_Longs is
    function "mod"(L, R : Very_Long) return Very_Long is
       Result : Very_Long;
    begin
-      raise Not_Implemented;
+      raise Program_Error with "Not Implemented mod";
       return Result;
    end "mod";
 

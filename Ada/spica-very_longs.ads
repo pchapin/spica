@@ -1,17 +1,12 @@
 
-with Ada.Containers.Vectors;
-with Interfaces; use Interfaces;
+private with Ada.Containers.Vectors;
+private with Interfaces;
 
 package Spica.Very_Longs is
 
    type    Very_Long is private;
    subtype Bit       is Natural range 0..1;
    type    Bit_Index is new Natural;
-
-   -- Use this for functions that are just placeholders. When this package
-   -- is finished, this exception can be removed.
-   --
-   Not_Implemented : exception;
 
    -- Used when converting a string of digits into a Very_Long.
    Invalid_Number : exception;
@@ -43,6 +38,7 @@ package Spica.Very_Longs is
                      Bit_Value  : in Bit);
 
 private
+   use Interfaces;
 
    type Sign_Type  is (Plus, Minus);         -- Used for the sign flag.
    type Long_Digit is new Unsigned_64;

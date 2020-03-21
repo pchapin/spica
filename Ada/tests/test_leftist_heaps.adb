@@ -4,7 +4,7 @@ with Spica.Heaps;
 with Spica.Leftist_Heaps;
 with Generic_Heap_Tests;
 
-package body Test_Leftist is
+procedure Test_Leftist_Heaps is
 
    package IHeaps is new Spica.Heaps(Integer);
    package ILeftist_Heaps is new Spica.Leftist_Heaps(Integer, "<", IHeaps);
@@ -12,12 +12,16 @@ package body Test_Leftist is
    package Heap_Tests is new Generic_Heap_Tests(IHeaps, ILeftist_Heaps.Heap);
    use Heap_Tests;
 
-   --  Run the tests.
-   procedure Execute is
-   begin
-      Put_Line("   Constructor"); Test_Heap_Constructor;
-      Put_Line("   Insert");      Test_Heap_Insert;
-      Put_Line("   Delete");      Test_Heap_Delete;
-   end Execute;
+begin
+   Put("Leftist_Heaps: Constructor... ");
+   Test_Heap_Constructor;
+   Put_Line("ok");
 
-end Test_Leftist;
+   Put("Leftist_Heaps: Insert...");
+   Test_Heap_Insert;
+   Put_Line("ok");
+
+   Put("Leftist_Heaps: Delete...");
+   Test_Heap_Delete;
+   Put_Line("ok");
+end Test_Leftist_Heaps;

@@ -1,5 +1,5 @@
 
-with CIS5050.Heaps;
+with Spica.Heaps;
 private with Ada.Finalization;
 
 generic

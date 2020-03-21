@@ -4,13 +4,16 @@
 --- Test cases need to be reviewed for coverage. Testing procedures can probably be improved
 --  (common code factored out (use a generic?)... more table driven relational tests, etc).
 
+with Ada.Assertions;
 with Ada.Strings.Bounded;
 with Ada.Text_IO;
-with Spica.Very_Longs; use Spica.Very_Longs;
-with Assertions;
+with Spica.Very_Longs;
 
-package body Test_Very_Longs is
-   use Assertions;
+use Ada.Assertions;
+use Ada.Text_IO;
+use Spica.Very_Longs;
+
+procedure Test_Very_Longs is
 
    package Bounded_128 is new Ada.Strings.Bounded.Generic_Bounded_Length(128);
    use Bounded_128;
@@ -385,16 +388,32 @@ package body Test_Very_Longs is
       Assert(Number_Of_Bits(Number) =  0, "No contraction after bit erasure");
    end Test_Bits;
 
+begin
+   Put("Very_Longs: Integer constructor... ");
+   Test_Integer_Constructor;
+   Put_Line("ok");
 
-   procedure Execute is
-   begin
-      Ada.Text_IO.Put_Line("   Integer constructor");  Test_Integer_Constructor;
-      Ada.Text_IO.Put_Line("   String constructor");   Test_String_Constructor;
-      Ada.Text_IO.Put_Line("   Relational operators"); Test_Relationals;
-      Ada.Text_IO.Put_Line("   Addition");             Test_Addition;
-      Ada.Text_IO.Put_Line("   Subtraction");          Test_Subtraction;
-      Ada.Text_IO.Put_Line("   Multiplication");       Test_Multiplication;
-      Ada.Text_IO.Put_Line("   Bit access");           Test_Bits;
-   end Execute;
+   Put("Very_Longs: String constructor... ");
+   Test_String_Constructor;
+   Put_Line("ok");
 
+   Put("Very_Longs: Relational operators... ");
+   Test_Relationals;
+   Put_Line("ok");
+
+   Put("Very_Longs: Addition... ");
+   Test_Addition;
+   Put_Line("ok");
+
+   Put("Very_Longs: Subtraction... ");
+   Test_Subtraction;
+   Put_Line("ok");
+
+   Put("Very_Longs: Multiplication... ");
+   Test_Multiplication;
+   Put_Line("ok");
+
+   Put("Very_Longs: Bit access... ");
+   Test_Bits;
+   Put_Line("ok");
 end Test_Very_Longs;

@@ -1,7 +1,7 @@
 project Spica is
 
    for Source_Dirs use (".", "tests", "benchmarks");
-   for Main use ("main.adb", "benchmarks.adb");
+   for Main use ("tests.adb", "benchmarks.adb");
    
    type Build_Type is ("Release", "Debug");
    Build : Build_Type := external("BUILD", "Debug");
