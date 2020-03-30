@@ -168,13 +168,35 @@ namespace spica {
         { Rational<T> temp( left ); temp %= right; return temp; }
 
 
+    //-----------------------------------------------
+    //           Other Non-Member Functions
+    //-----------------------------------------------
+
+    template<typename T>
+    Rational<T> inverse( const Rational<T> &rat )
+    {
+        T numerator   = rat.get_numerator( );
+        T denominator = rat.get_denominator( );
+
+        if( denominator < 0 ) {
+            numerator *= -1;
+            denominator *= -1;
+        }
+        return Rational<T>( denominator, numerator );
+    }
+
+    
+    //-------------------------------------
+    //           Member Functions
+    //-------------------------------------
+    
 
     //
     // void Rational::reduce( );
     //
-    // This function reduces a Rational number into lowest terms. For example, a number such as 4/2
-    // becomes 2/1, etc. This function is used after each operation on Rational numbers to insure
-    // that they stay in as "small" a form as possible.
+    // This function reduces a Rational number into lowest terms. For example, a number such as
+    // 4/2 becomes 2/1, etc. This function is used after each operation on Rational numbers to
+    // insure that they stay in as "small" a form as possible.
     //
     template<typename integer_type>
     void Rational<integer_type>::reduce( )
