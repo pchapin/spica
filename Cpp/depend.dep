@@ -8,3 +8,4 @@ str.cpp
 string_utilities.cpp
 Timer.cpp
 UnitTestManager.cpp
+VeryLong.cpp

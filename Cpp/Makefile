@@ -16,7 +16,8 @@ SOURCES=base64.cpp           \
 	string_utilities.cpp \
 	synchronize.cpp      \
 	Timer.cpp            \
-	UnitTestManager.cpp
+	UnitTestManager.cpp  \
+	VeryLong.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 LIBRARY=libSpicaCpp.a
 
@@ -29,7 +30,7 @@ $(LIBRARY):	$(OBJECTS)
 # File Dependencies
 ###################
 
-# Module dependencies -- Produced with 'depend' on Sun Jul 14 15:50:43 2013
+# Module dependencies -- Produced with 'depend' on Mon Mar 30 11:45:46 2020
 
 
 base64.o:	base64.cpp base64.hpp 
@@ -51,6 +52,8 @@ string_utilities.o:	string_utilities.cpp string_utilities.hpp
 Timer.o:	Timer.cpp Timer.hpp environ.hpp 
 
 UnitTestManager.o:	UnitTestManager.cpp UnitTestManager.hpp 
+
+VeryLong.o:	VeryLong.cpp VeryLong.hpp 
 
 
 # Additional Rules
