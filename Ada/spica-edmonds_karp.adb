@@ -1,5 +1,5 @@
 
-package body Edmonds_Karp is
+package body Spica.Edmonds_Karp is
    use Edge_Lists;
    use Vertex_Vectors;
 
@@ -33,7 +33,7 @@ package body Edmonds_Karp is
 
    -- Looks up the specified edge and returns it. If the edge does not exist the returned flow
    -- and capacity are both zero. There shouldn't be any edges in G with zero capacity.
-   function Get_Edge(G : in Graph; From, To : Vertex_Number_Type) return Edge_Information is
+   function Get_Edge(G : Graph; From, To : Vertex_Number_Type) return Edge_Information is
       Result : Edge_Information := (From => From, To => To, Capacity => 0.0, Flow => 0.0);
    begin
       -- FINISH ME!
@@ -111,4 +111,4 @@ package body Edmonds_Karp is
       return Flow;
    end Maximum_Flow;
 
-end Edmonds_Karp;
+end Spica.Edmonds_Karp;

@@ -7,7 +7,7 @@ with Ada.Containers.Vectors;
 -- http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-18-2.html
 -- http://www.ada-auth.org/standards/rm12_w_tc1/html/RM-A-18-3.html
 
-package Edmonds_Karp is
+package Spica.Edmonds_Karp is
    use type Ada.Containers.Count_Type;
 
    subtype Extended_Vertex_Number_Type is
@@ -51,4 +51,4 @@ package Edmonds_Karp is
      (G : in out Graph; Source, Sink : in Vertex_Number_Type) return Flow_Type
      with Pre => (Source <= G.Vertexes.Length and Sink <= G.Vertexes.Length);
 
-end Edmonds_Karp;
+end Spica.Edmonds_Karp;
