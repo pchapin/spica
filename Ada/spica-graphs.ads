@@ -82,7 +82,7 @@ private
       Data     : Vertex_Vectors.Vector;     -- Holds all the vertex data.
       Forward  : Adjacency_Vectors.Vector;  -- For finding vertex successors.
       Backward : Adjacency_Vectors.Vector;  -- For finding vertex predecessors.
-      Size     : Natural := 0;              -- Number of verticies.
+      Size     : Natural := 0;              -- Number of vertexes.
    end record;
 
 end Spica.Graphs;
