@@ -9,7 +9,7 @@ generic
 package Spica.Fibonacci_Heaps is
 
    type Heap is limited new Heaps_Package.Heap with private;
-   type Node_Access is private;
+   type Node_Handle is private;
 
    -- Inserts Item into heap H. Duplicate items are allowed. Amortized O(1)
    overriding
@@ -40,25 +40,26 @@ package Spica.Fibonacci_Heaps is
 
    -- Like the Insert above except it returns a access value to the node containing the key.
    not overriding
-   procedure Insert(H : in out Heap; Item : in Key_Type; Result_Node : out Node_Access);
+   procedure Insert(H : in out Heap; Item : in Key_Type; Result_Node : out Node_Handle);
 
    -- Raises a key's priority. Amortized O(1).
    not overriding
    procedure Raise_Key_Priority
-     (H : in out Heap; Existing_Node : in Node_Access; New_Item : in Key_Type)
+     (H : in out Heap; Existing_Node : in Node_Handle; New_Item : in Key_Type)
      with Pre => New_Item < Get_Key(Existing_Node);
 
    -- Removes the existing node (and its key) from the heap. Amortized O(log(N))
    not overriding
-   procedure Delete(H : in out Heap; Existing_Node : in out Node_Access);
+   procedure Delete(H : in out Heap; Existing_Node : in out Node_Handle);
 
    -- Returns the key inside the existing node. O(1)
-   function Get_Key(Existing_Node : Node_Access) return Key_Type;
+   function Get_Key(Existing_Node : Node_Handle) return Key_Type;
 
 private
 
    type Node;
-   type Node_Access is access Node;
+   type Node_Handle is access Node;
+   subtype Node_Access is Node_Handle;
 
    type Heap is limited new Ada.Finalization.Limited_Controlled and Heaps_Package.Heap with
       record

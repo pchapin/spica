@@ -73,26 +73,26 @@ package body Spica.Fibonacci_Heaps is
    end Check_Sanity;
 
 
-   procedure Insert(H : in out Heap; Item : in Key_Type; Result_Node : out Node_Access) is
+   procedure Insert(H : in out Heap; Item : in Key_Type; Result_Node : out Node_Handle) is
    begin
       raise Program_Error with "Not Implemented";
    end Insert;
 
 
    procedure Raise_Key_Priority
-     (H : in out Heap; Existing_Node : in Node_Access; New_Item : in Key_Type) is
+     (H : in out Heap; Existing_Node : in Node_Handle; New_Item : in Key_Type) is
    begin
       raise Program_Error with "Not Implemented";
    end Raise_Key_Priority;
 
 
-   procedure Delete(H : in out Heap; Existing_Node : in out Node_Access) is
+   procedure Delete(H : in out Heap; Existing_Node : in out Node_Handle) is
    begin
       raise Program_Error with "Not Implemented";
    end Delete;
 
 
-   function Get_Key(Existing_Node : Node_Access) return Key_Type is
+   function Get_Key(Existing_Node : Node_Handle) return Key_Type is
    begin
       return Existing_Node.Key;
    end Get_Key;

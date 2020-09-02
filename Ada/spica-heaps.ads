@@ -5,7 +5,7 @@ package Spica.Heaps is
 
    type Heap is limited interface;
 
-   -- Inserts Item into heap H. If the Key alread exists in the heap, it is replaced.
+   -- Inserts Item into heap H. If the Key already exists in the heap, it is replaced.
    procedure Insert(H : in out Heap; Key : in Key_Type) is abstract;
 
    -- Returns the highest priority key in the heap.
