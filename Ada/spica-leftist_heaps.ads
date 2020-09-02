@@ -3,37 +3,43 @@ with Spica.Heaps;
 private with Ada.Finalization;
 
 generic
-   type Element_Type is private;
-   with function "<"(Left, Right : Element_Type) return Boolean is <>;
-   with package Heaps_Package is new Heaps(Element_Type);
+   type Key_Type is private;
+   with package Heaps_Package is new Heaps(Key_Type);
+   with function "<"(Left, Right : Key_Type) return Boolean is <>;
 package Spica.Leftist_Heaps is
 
    type Heap is limited new Heaps_Package.Heap with private;
 
    -- Inserts Item into heap H. Duplicate items are allowed. O(log(N))
-   overriding procedure Insert(H : in out Heap; Item : in Element_Type);
+   overriding
+   procedure Insert(H : in out Heap; Item : in Key_Type);
+
+   -- Returns the highest priority key in the heap. O(1)
+   overriding
+   function Top_Priority(H : Heap) return Key_Type;
+
+   -- Removes the highest priority key from the heap. O(log(N))
+   overriding
+   procedure Delete_Top_Priority(H : in out Heap);
 
    -- Merges heap Source into Destination. The source heap is emptied. O(log(N))
-   overriding procedure Merge(Destination : in out Heap; Source : in out Heap);
-
-   -- Removes the "top" element from the heap. O(log(N))
-   overriding procedure Delete_Top(H : in out Heap);
-
-   -- Returns the "top" (highest priority) heap element. O(1)
-   overriding function Top(H : Heap) return Element_Type;
+   overriding
+   procedure Union(Destination : in out Heap; Source : in out Heap);
 
    -- Returns the number of elements in the heap. O(1)
-   overriding function Size(H : Heap) return Natural;
+   overriding
+   function Size(H : Heap) return Natural;
 
    -- Raises Heaps_Package.Inconsistent_Heap if the heap is in an invalid state.
-   overriding procedure Check_Sanity(H : in Heap);
+   overriding
+   procedure Check_Sanity(H : in Heap; Message : in String);
 
 private
    type Heap_Node;
    type Heap_Node_Access is access Heap_Node;
    type Heap_Node is
       record
-         Data             : Element_Type;
+         Data             : Key_Type;
          Count            : Natural := 1;
          Null_Path_Length : Natural := 0;
          Left_Child       : Heap_Node_Access := null;
