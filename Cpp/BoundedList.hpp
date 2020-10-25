@@ -1,6 +1,6 @@
 /*! \file    BoundedList.hpp
  *  \brief   List template that preallocates memory.
- *  \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+ *  \author  Peter C. Chapin <chapinp@acm.org>
  *
  * Bounded lists allocate a block of memory when they are constructed and will only use that
  * allocated block. Thus if construction is successful they will never run out of memory
@@ -48,11 +48,11 @@ namespace spica {
         typedef std::ptrdiff_t difference_type;
 
     private:
-        T         *raw;       // Pre-allocated block of raw memory.
-        size_type *next;      // Array of "next" indicies.
-        size_type *previous;  // Array of "previous" indicies.
+        T         *raw;       // Preallocated block of raw memory.
+        size_type *next;      // Array of "next" indices.
+        size_type *previous;  // Array of "previous" indices.
         size_type  count;     // Number of items in list.
-        size_type  capacity;  // Size of pre-allocated block.
+        size_type  capacity;  // Size of preallocated block.
         size_type  free;      // Front of the free list.
 
     public:

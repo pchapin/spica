@@ -1,6 +1,6 @@
 /*! \file    BoundedList_tests.cpp
     \brief   Exercise spica::BoundedList.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+    \author  Peter C. Chapin <chapinp@acm.org>
 */
 
 #include <exception>
@@ -38,7 +38,7 @@ static void constructor_test( )
         list_d.push_back( 1 );
         UNIT_FAIL( "Unexpectedly able to push_back to a full BoundedList" );
     }
-    catch( std::length_error ) {
+    catch( std::length_error &) {
         // okay.
     }
     catch( ... ) {

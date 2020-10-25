@@ -35,7 +35,7 @@
   \includegraphics[scale=0.80]{VermontTech_stack_361.jpg}\\[16mm]
   \end{tabular}
 }
-\date{November 4, 2013}
+\date{October 22, 2020}
 
 \begin{document}
 
@@ -301,7 +301,7 @@ BoundedList<T>::BoundedList( size_type max_count )
 {
   raw =
     reinterpret_cast<T *>(new char[(max_count + 1)*sizeof(T)]);
- 
+
   next     = new size_type[max_count + 1];
   previous = new size_type[max_count + 1];
   count    = 0;
@@ -509,7 +509,7 @@ These methods return an appropriate iterator from !this! object.
 \end{citemize}
 \centerline{Questions?}
 \makeatletter
-\centerline{PChapin@vtc.vsc.edu}
+\centerline{chapinp@acm.org}
 \makeatother
 \stopslide
 

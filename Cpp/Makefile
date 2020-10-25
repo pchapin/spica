@@ -23,6 +23,8 @@ LIBRARY=libSpicaCpp.a
 
 %.o:	%.cpp
 	$(CXX) $(CXXFLAGS) $< -o $@
+	
+all:	$(LIBRARY)
 
 $(LIBRARY):	$(OBJECTS)
 	$(LINK) $(LINKFLAGS) -o $@ $(OBJECTS)
