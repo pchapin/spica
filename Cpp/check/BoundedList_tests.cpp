@@ -1,7 +1,7 @@
 /*! \file    BoundedList_tests.cpp
-    \brief   Exercise spica::BoundedList.
-    \author  Peter C. Chapin <chapinp@acm.org>
-*/
+ *  \brief   Exercise spica::BoundedList.
+ *  \author  Peter C. Chapin <chapinp@acm.org>
+ */
 
 #include <exception>
 #include <iostream>
@@ -32,7 +32,7 @@ static void constructor_test( )
     UNIT_CHECK( list_d.size( ) == 0 );
     UNIT_CHECK( list_0.size( ) == 0 );
     UNIT_CHECK( list_1.size( ) == 0 );
-    UNIT_CHECK( list_1.size( ) == 0 );
+    UNIT_CHECK( list_2.size( ) == 0 );
 
     try {
         list_d.push_back( 1 );

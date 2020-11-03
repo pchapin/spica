@@ -528,7 +528,7 @@ bool str_tests()
   const int BUFFER_SIZE = 256;
   char line_buffer[BUFFER_SIZE+1];
 
-  std::cout << "str_test: Program to exercise class pcc::String.\n"
+  std::cout << "str_test: Program to exercise class spica::String.\n"
             << "(C) Copyright 2001 by Peter Chapin.\n"
             << std::endl;
 

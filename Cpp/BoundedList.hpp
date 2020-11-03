@@ -60,7 +60,7 @@ namespace spica {
         //! Bounded list iterators.
         /*!
          * The nested class iterator describes objects that know how to step up and down a
-         * bounded_list. The iterators for bounded_list are bidirectional.
+         * BoundedList. The iterators for BoundedList are bidirectional.
          */
         class iterator :
             public std::iterator< std::bidirectional_iterator_tag, T > {
@@ -70,6 +70,16 @@ namespace spica {
         private:
             BoundedList *my_list;                     // BoundedList into which we are pointing.
             typename BoundedList::size_type my_node;  // Node to which we are pointing.
+
+            // Constructs a bounded list iterator.
+            /*!
+             * \param list Pointer to the list into which the iterator will point.
+             * \param index Index into the storage array used by the list where the target of
+             * the iterator is located.
+             */
+            iterator( BoundedList *list, size_type index ) :
+                my_list( list ), my_node( index )
+                { }
 
         public:
             //! Preincrement.
@@ -116,23 +126,13 @@ namespace spica {
             pointer operator->( )
                 { return( &my_list->raw[my_node] ); }
 
-            // Constructs a bounded list iterator.
-            /*!
-             * \param list Pointer to the list into which the iterator will point.
-             * \param index Index into the storage array used by the list where the target of
-             * the iterator is located.
-             */
-            iterator( BoundedList *list, size_type index ) :
-                my_list( list ), my_node( index )
-                { }
-
             //! Default constructor.
             iterator( ) : my_list( 0 ), my_node( 0 )
                 { }
 
         }; // End of BoundedList<T>::iterator
 
-        friend class BoundedList::iterator;
+        //friend class BoundedList::iterator;
 
         BoundedList( size_type max_count );
        ~BoundedList( ) noexcept;
