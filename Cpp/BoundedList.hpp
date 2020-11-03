@@ -209,6 +209,9 @@ namespace spica {
 
     };  // End of BoundedList<T>
 
+    // ===========================
+    // IMPLEMENTATION BEGINS HERE!
+    // ===========================
 
     template< typename T >
     BoundedList< T >::BoundedList( size_type max_count )
