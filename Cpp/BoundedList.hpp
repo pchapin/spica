@@ -11,6 +11,7 @@
 #ifndef BOUNDEDLIST_HPP
 #define BOUNDEDLIST_HPP
 
+#include <initializer_list>
 #include <iterator>
 #include <memory>
 #include <new>
@@ -55,6 +56,8 @@ namespace spica {
         size_type  capacity;  // Size of preallocated block.
         size_type  free;      // Front of the free list.
 
+        void do_initialize(size_type max_size);
+
     public:
 
         //! Bounded list iterators.
@@ -77,7 +80,7 @@ namespace spica {
              * \param index Index into the storage array used by the list where the target of
              * the iterator is located.
              */
-            iterator( BoundedList *list, size_type index ) :
+            iterator( BoundedList *list, size_type index ) noexcept :
                 my_list( list ), my_node( index )
                 { }
 
@@ -86,7 +89,7 @@ namespace spica {
             /*!
              * Advances iterator to next item in the list and returns a reference to itself.
              */
-            iterator &operator++( )
+            iterator &operator++( ) noexcept
                 { my_node = my_list->next[my_node]; return( *this ); }
 
             //! Postincrement.
@@ -100,7 +103,7 @@ namespace spica {
             /*!
              * Backs up iterator to previous item in list and returns a reference to itself.
              */
-            iterator &operator--( )
+            iterator &operator--( ) noexcept
                 { my_node = my_list->previous[my_node]; return( *this ); }
 
             //! Postdecrement.
@@ -111,15 +114,15 @@ namespace spica {
                 { iterator temp( *this ); my_node = my_list->previous[my_node]; return temp; }
 
             //! Returns true if *this and other point at the same object.
-            bool operator==( const iterator &other )
+            bool operator==( const iterator &other ) noexcept
                 { return( my_node == other.my_node ); }
 
             //! Returns true if *this and other point at different objects.
-            bool operator!=( const iterator &other )
+            bool operator!=( const iterator &other ) noexcept
                 { return( my_node != other.my_node ); }
 
             //! Returns a reference to the item the iterator is pointing at.
-            reference operator*( )
+            reference operator*( ) noexcept
                 { return( my_list->raw[my_node] ); }
 
             //! Returns a pointer to the item the iterator is pointing at.
@@ -127,7 +130,7 @@ namespace spica {
                 { return( &my_list->raw[my_node] ); }
 
             //! Default constructor.
-            iterator( ) : my_list( 0 ), my_node( 0 )
+            iterator( ) noexcept : my_list( 0 ), my_node( 0 )
                 { }
 
         }; // End of BoundedList<T>::iterator
@@ -135,7 +138,11 @@ namespace spica {
         //friend class BoundedList::iterator;
 
         BoundedList( size_type max_count );
+        BoundedList(const std::initializer_list<T>& initializer);
        ~BoundedList( ) noexcept;
+
+        BoundedList( BoundedList &&other ) noexcept;
+        BoundedList<T> &operator=(BoundedList &&other) noexcept;
 
         //! Return the number of elements currently on the list. O(1)
         size_type size( ) const noexcept
@@ -149,17 +156,17 @@ namespace spica {
         size_type max_size( ) const noexcept
             { return( capacity ); }
 
-        iterator begin( )
+        iterator begin( ) noexcept
             { return( iterator( this, next[0] ) ); }
 
-        iterator end( )
+        iterator end( ) noexcept
             { return( iterator( this, 0 ) ); }
 
         //! Returns a reference to the first item on the list. O(1)
-        reference front( )
+        reference front( ) noexcept
             { return( raw[next[0]] ); }
 
-        const_reference front( ) const
+        const_reference front( ) const noexcept
             { return( raw[next[0]] ); }
 
         //! Appends item to the end of the list. O(1)
@@ -174,14 +181,14 @@ namespace spica {
         void push_back( ForwardIterator first, ForwardIterator last );
 
         //! Returns a reference to the last item on the list. O(1)
-        reference back( )
+        reference back( ) noexcept
             { return( raw[previous[0]] ); }
 
-        const_reference back( ) const
+        const_reference back( ) const noexcept
             { return( raw[previous[0]] ); }
 
         //! Removes the last item on the list. O(1)
-        void pop_back( );
+        void pop_back( ) noexcept;
 
         //! Inserts a new item into the list.
         /*!
@@ -205,7 +212,7 @@ namespace spica {
          * iterator, the effect is undefined.
          * \return An iterator that points at the element that was just past the element erased.
          */
-        iterator erase( iterator pos );
+        iterator erase( iterator pos ) noexcept;
 
     };  // End of BoundedList<T>
 
@@ -214,13 +221,13 @@ namespace spica {
     // ===========================
 
     template< typename T >
-    BoundedList< T >::BoundedList( size_type max_count )
+    void BoundedList<T>::do_initialize( size_type max_count )
     {
-        std::unique_ptr<char[]> temp_raw( new char[(max_count + 1) * sizeof(T)] );
-        std::unique_ptr<size_type[]> temp_next( new size_type[max_count+1] );
-        std::unique_ptr<size_type[]> temp_previous( new size_type[max_count+1] );
+        std::unique_ptr<char[]> temp_raw( new char[( max_count + 1 ) * sizeof(T)] );
+        std::unique_ptr<size_type[]> temp_next( new size_type[max_count + 1] );
+        std::unique_ptr<size_type[]> temp_previous( new size_type[max_count + 1] );
 
-        raw      = reinterpret_cast<T *>( temp_raw.release( ) );
+        raw      = reinterpret_cast<T*>( temp_raw.release( ) );
         next     = temp_next.release( );
         previous = temp_previous.release( );
         count    = 0;
@@ -243,8 +250,31 @@ namespace spica {
 
 
     template< typename T >
+    BoundedList< T >::BoundedList( size_type max_count )
+    {
+        do_initialize( max_count );
+    }
+
+
+    template< typename T >
+    BoundedList<T>::BoundedList( const std::initializer_list<T>& initializer )
+    {
+        // Default construct *this so the list is fully functional.
+        do_initialize( initializer.size( ) );
+
+        // Append each item from the initializer list onto *this.
+        const iterator it = end( );
+        for( const T &item : initializer ) {
+            insert( it, item );
+        }
+    }
+
+
+    template< typename T >
     BoundedList< T >::~BoundedList( ) noexcept
     {
+        if( raw == nullptr ) return;
+
         // Destroy all the active items.
         size_type current = next[0];
         while( current != 0 ) {
@@ -260,7 +290,44 @@ namespace spica {
 
 
     template< typename T >
-    void BoundedList< T >::push_back( const T &item )
+    BoundedList<T>::BoundedList( BoundedList&& other ) noexcept
+    {
+        raw      = other.raw;
+        next     = other.next;
+        previous = other.previous;
+        count    = other.count;
+        capacity = other.capacity;
+        free     = other.free;
+
+        other.raw      = nullptr;
+        other.next     = nullptr;
+        other.previous = nullptr;
+    }
+
+
+    template< typename T >
+    BoundedList<T>& BoundedList<T>::operator=( BoundedList&& other ) noexcept
+    {
+        if( this != &other ) {
+            this->~BoundedList( );
+ 
+            raw      = other.raw;
+            next     = other.next;
+            previous = other.previous;
+            count    = other.count;
+            capacity = other.capacity;
+            free     = other.free;
+
+            other.raw      = nullptr;
+            other.next     = nullptr;
+            other.previous = nullptr;
+        }
+        return *this;
+    }
+
+
+    template< typename T >
+    void BoundedList<T>::push_back( const T &item )
     {
         if( free == 0 )
             throw std::length_error( "BoundedList: full; can't increase capacity" );
@@ -280,6 +347,7 @@ namespace spica {
         ++count;
     }
 
+
     template< typename T >
     template< typename ForwardIterator >
     void BoundedList<T>::push_back( ForwardIterator first, ForwardIterator last )
@@ -292,7 +360,7 @@ namespace spica {
 
 
     template< typename T >
-    void BoundedList< T >::pop_back( )
+    void BoundedList<T>::pop_back( ) noexcept
     {
         // Remove the last item (I assume one is present).
         size_type p = previous[previous[0]];
@@ -307,8 +375,8 @@ namespace spica {
 
 
     template< typename T >
-    typename BoundedList< T >::iterator
-        BoundedList< T >::insert( iterator pos, const T &item )
+    typename BoundedList<T>::iterator
+        BoundedList<T>::insert( iterator pos, const T &item )
     {
         size_type p;
 
@@ -332,8 +400,8 @@ namespace spica {
 
 
     template< typename T >
-    typename BoundedList< T >::iterator
-        BoundedList< T >::erase( iterator pos )
+    typename BoundedList<T>::iterator
+        BoundedList<T>::erase( iterator pos ) noexcept
     {
         size_type p = pos.my_node;
         size_type temp = next[p];

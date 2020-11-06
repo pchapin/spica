@@ -28,11 +28,13 @@ static void constructor_test( )
     BoundedList<int> list_0(   1 );
     BoundedList<int> list_1(  10 );
     BoundedList<int> list_2( 100 );
+    BoundedList<int> list_3 = { 1, 2, 3, 4, 5 };
 
     UNIT_CHECK( list_d.size( ) == 0 );
     UNIT_CHECK( list_0.size( ) == 0 );
     UNIT_CHECK( list_1.size( ) == 0 );
     UNIT_CHECK( list_2.size( ) == 0 );
+    UNIT_CHECK( list_3.size( ) == 5 );
 
     try {
         list_d.push_back( 1 );
@@ -44,18 +46,25 @@ static void constructor_test( )
     catch( ... ) {
         UNIT_FAIL( "Unexpected exception while executing push_back to a full BoundedList" );
     }
+
+    BoundedList<int>::iterator p( list_3.begin( ) );
+    int i = 1;
+    while( p != list_3.end( ) ) {
+        UNIT_CHECK( *p == i );
+        ++i;
+        ++p;
+    }
 }
 
 
 static void push_back_test( )
 {
-    int i;
     BoundedList<int> my_list( 100 );
 
     make_list( my_list );
 
     BoundedList<int>::iterator p( my_list.begin( ) );
-    i = 0;
+    int i = 0;
     while( p != my_list.end( ) ) {
         UNIT_CHECK( *p == i );
         ++i;
@@ -131,7 +140,7 @@ static void insert_test( )
     // Try inserting in the middle.
     p1 = my_list.begin( );
     for( int i = 0; i < 50; ++i ) ++p1;
-    int temp = *p1;
+    const int temp = *p1;
     p2 = my_list.insert( p1, -3 );
     UNIT_CHECK( *p1 == temp );
     UNIT_CHECK( *p2 == -3 );
@@ -176,7 +185,7 @@ static void erase_test( )
     for( i = 0; i < 50; ++i ) ++p1;
     p2 = p1;
     ++p2;
-    int temp = *p2;
+    const int temp = *p2;
     p2 = my_list.erase( p1 );
     UNIT_CHECK( *p2 == temp );
     UNIT_CHECK( my_list.size( ) == 98 );
