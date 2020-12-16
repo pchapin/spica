@@ -176,6 +176,7 @@
     <ClInclude Include="Graph.hpp" />
     <ClInclude Include="HashtableOpen.hpp" />
     <ClInclude Include="regkey.hpp" />
+    <ClInclude Include="SingleList.hpp" />
     <ClInclude Include="sorters.hpp" />
     <ClInclude Include="spica.hpp" />
     <ClInclude Include="str.hpp" />

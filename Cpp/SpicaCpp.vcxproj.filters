@@ -137,5 +137,8 @@
     <ClInclude Include="BitFile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SingleList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
