@@ -3,8 +3,8 @@ with Spica.Graphs;
 
 generic
    type Vertex_Type is private;
-   with package Graphs_Package is new CIS5050.Graphs(Vertex_Type);
-package CIS5050.Graph_Algorithms is
+   with package Graphs_Package is new Spica.Graphs(Vertex_Type);
+package Spica.Graph_Algorithms is
    use Graphs_Package;
 
    subtype Extended_Vertex_Number_Type is
