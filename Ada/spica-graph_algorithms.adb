@@ -37,7 +37,7 @@ package body Spica.Graph_Algorithms is
          for V of Get_Successor_List(G, U) loop
             if Vertex_Colors(V) = White then
                Vertex_Colors(V) := Gray;
-               Result(V).Distance := Result(V).Distance + 1;
+               Result(V).Distance := Result(U).Distance + 1;
                Result(V).Predecessor := U;
                Q.Append(V);
             end if;

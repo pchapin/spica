@@ -25,7 +25,7 @@ package body Spica.Graphs is
       -- Helper function returns True if the edge already exists; False otherwise.
       function Edge_Exists return Boolean is
       begin
-         return The_Graph.Forward.Element(From).Contains(To);
+         return The_Graph.Forward(From).Contains(To);
       end Edge_Exists;
 
       -- Helper procedure used in call to Update_Element.
@@ -55,7 +55,7 @@ package body Spica.Graphs is
       Vertex_Number : Vertex_Number_Type) return Vertex_Type is
    begin
       if Vertex_Number > The_Graph.Size then raise Bad_Vertex; end if;
-      return The_Graph.Data.Element(Vertex_Number);
+      return The_Graph.Data(Vertex_Number);
    end Get_Vertex;
 
 
@@ -74,11 +74,11 @@ package body Spica.Graphs is
    begin
       if Vertex_Number > The_Graph.Size then raise Bad_Vertex; end if;
       declare
-         Count  : Natural := The_Graph.Forward.Element(Vertex_Number).Last_Index;
+         Count  : Natural := The_Graph.Forward(Vertex_Number).Last_Index;
          Result : Vertex_List(1 .. Count);
       begin
          for I in Result'Range loop
-            Result(I) := The_Graph.Forward.Element(Vertex_Number).Element(I);
+            Result(I) := The_Graph.Forward(Vertex_Number)(I);
          end loop;
          return Result;
       end;
@@ -91,11 +91,11 @@ package body Spica.Graphs is
    begin
       if Vertex_Number > The_Graph.Size then raise Bad_Vertex; end if;
       declare
-         Count  : Natural := The_Graph.Backward.Element(Vertex_Number).Last_Index;
+         Count  : Natural := The_Graph.Backward(Vertex_Number).Last_Index;
          Result : Vertex_List(1 .. Count);
       begin
          for I in Result'Range loop
-            Result(I) := The_Graph.Backward.Element(Vertex_Number).Element(I);
+            Result(I) := The_Graph.Backward(Vertex_Number)(I);
          end loop;
          return Result;
       end;
