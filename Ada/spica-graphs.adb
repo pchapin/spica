@@ -74,7 +74,7 @@ package body Spica.Graphs is
    begin
       if Vertex_Number > The_Graph.Size then raise Bad_Vertex; end if;
       declare
-         Count  : Natural := The_Graph.Forward(Vertex_Number).Last_Index;
+         Count  : Natural := The_Graph.Forward(Vertex_Number).Length;
          Result : Vertex_List(1 .. Count);
       begin
          for I in Result'Range loop
@@ -91,7 +91,7 @@ package body Spica.Graphs is
    begin
       if Vertex_Number > The_Graph.Size then raise Bad_Vertex; end if;
       declare
-         Count  : Natural := The_Graph.Backward(Vertex_Number).Last_Index;
+         Count  : Natural := The_Graph.Backward(Vertex_Number).Length;
          Result : Vertex_List(1 .. Count);
       begin
          for I in Result'Range loop
