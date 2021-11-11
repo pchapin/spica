@@ -1,7 +1,7 @@
 with Spica.Heaps;
 
 generic
-   with package Heap_Package is new Spica.Heaps(Element_Type => Integer);
+   with package Heap_Package is new Spica.Heaps(Key_Type => Integer);
    type Heap is limited new Heap_Package.Heap with private;
 package Generic_Heap_Tests is
 

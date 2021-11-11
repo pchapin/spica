@@ -46,7 +46,6 @@ package body Test_Sorters is
    procedure Test_Insertion_Sort is
       Degenerate : Degenerate_Array := (Degenerate_Array'First => 42);
    begin
-      Put("Insertion_Sort... ");
       Test_Cases := Original_Test_Cases;
       for I in Test_Cases'Range loop
          Integer_Insertion_Sort(Test_Cases(I).Input);
@@ -56,16 +55,12 @@ package body Test_Sorters is
       Integer_Insertion_Sort(Degenerate);
       Assert(Degenerate = (Degenerate_Array'First => 42),
              "Insertion_Sort fails: degenerate case");
-
-      -- If we get here, everything worked.
-      Put_Line("ok");
    end Test_Insertion_Sort;
 
 
    procedure Test_Merge_Sort is
       Degenerate : Degenerate_Array := (Degenerate_Array'First => 42);
    begin
-      Put("Merge_Sort...");
       Test_Cases := Original_Test_Cases;
       for I in Test_Cases'Range loop
          Integer_Merge_Sort(Test_Cases(I).Input, 1, Test_Cases(I).Input'Length);
@@ -75,9 +70,6 @@ package body Test_Sorters is
       Integer_Merge_Sort(Degenerate, 1, Degenerate'Length);
       Assert(Degenerate = (Degenerate_Array'First => 42),
              "Merge_Sort fails: degenerate case");
-
-      -- If we get here, everything worked.
-      Put_Line("ok");
    end Test_Merge_Sort;
 
    -- Other tests to consider:

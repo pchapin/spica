@@ -22,14 +22,9 @@ package body Test_Arrays is
         (13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, -7);
       Result : Subarray_Summary;
    begin
-      Put("Maximum_Subarray...");
-
       Result := Find_Maximum_Subarray(My_Array);
       Assert(Result = (8, 11, 43),
              "Find_Maximum_Subarray failed on the book's example!");
-
-      -- If we get here, everything worked.
-      Put_Line("ok");
    end Test_Maximum_Subarray;
 
 end Test_Arrays;

@@ -7,7 +7,7 @@ with Generic_Heap_Tests;
 procedure Test_Leftist_Heaps is
 
    package IHeaps is new Spica.Heaps(Integer);
-   package ILeftist_Heaps is new Spica.Leftist_Heaps(Integer, "<", IHeaps);
+   package ILeftist_Heaps is new Spica.Leftist_Heaps(Integer, IHeaps);
 
    package Heap_Tests is new Generic_Heap_Tests(IHeaps, ILeftist_Heaps.Heap);
    use Heap_Tests;
