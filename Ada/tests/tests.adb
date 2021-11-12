@@ -4,7 +4,7 @@ with Ada.Text_IO;
 with Test_Arrays;
 with Test_Binary_Search_Trees;
 with Test_Double_List;
--- with Test_Leftist_Heaps;
+with Test_Leftist_Heaps;
 with Test_Longest_Common_Subsequence;
 with Test_RedBlack_Trees;
 with Test_Skip_Lists;
@@ -65,7 +65,7 @@ begin
    Execute_Test("Skip Lists", Test_Skip_Lists'Access);
 
    -- Heaps
-   -- Execute_Test("Leftist Heaps", Test_Leftist_Heaps'Access);
+   Execute_Test("Leftist Heaps", Test_Leftist_Heaps'Access);
 
    -- Tree Data Structures
    Execute_Test("Binary Search Trees", Test_Binary_Search_Trees'Access);

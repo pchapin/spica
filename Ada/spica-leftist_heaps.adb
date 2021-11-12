@@ -10,15 +10,15 @@ package body Spica.Leftist_Heaps is
      Ada.Unchecked_Deallocation(Object => Heap_Node, Name => Heap_Node_Access);
 
 
-   procedure Insert(H : in out Heap; Item : in Element_Type) is
+   procedure Insert(H : in out Heap; Item : in Key_Type) is
       Temp_Heap : Heap;
    begin
       Temp_Heap.Root := new Heap_Node'(Data => Item, others => <>);
-      Merge(H, Temp_Heap);
+      Union(H, Temp_Heap);
    end Insert;
 
 
-   procedure Merge(Destination : in out Heap; Source : in out Heap) is
+   procedure Union(Destination : in out Heap; Source : in out Heap) is
       Child_Heap : Heap;
       Larger     : access Heap;
       Smaller    : access Heap;
@@ -43,7 +43,7 @@ package body Spica.Leftist_Heaps is
 
       -- Merge heap with larger root into right child of heap with smaller root.
       Child_Heap.Root := Smaller.Root.Right_Child;
-      Merge(Child_Heap, Larger.all);
+      Union(Child_Heap, Larger.all);
       Smaller.Root.Right_Child := Child_Heap.Root;
       Child_Heap.Root := null;
 
@@ -70,10 +70,10 @@ package body Spica.Leftist_Heaps is
       -- Update the parameters.
       Destination.Root := Smaller.Root;
       Source.Root := null;
-   end Merge;
+   end Union;
 
 
-   procedure Delete_Top(H : in out Heap) is
+   procedure Delete_Top_Priority(H : in out Heap) is
       Left_Child  : Heap_Node_Access;
       Right_Child : Heap_Node_Access;
       Temp_Heap   : Heap;
@@ -86,17 +86,17 @@ package body Spica.Leftist_Heaps is
 
       H.Root := Left_Child;
       Temp_Heap.Root := Right_Child;
-      Merge(H, Temp_Heap);
-   end Delete_Top;
+      Union(H, Temp_Heap);
+   end Delete_Top_Priority;
 
 
-   function Top(H : Heap) return Element_Type is
+   function Top_Priority(H : Heap) return Key_Type is
    begin
       if H.Root = null then
          raise Constraint_Error;
       end if;
       return H.Root.Data;
-   end Top;
+   end Top_Priority;
 
 
    function Size(H : Heap) return Natural is
@@ -106,7 +106,7 @@ package body Spica.Leftist_Heaps is
    end Size;
 
 
-   procedure Check_Sanity(H : in Heap) is
+   procedure Check_Sanity(H : in Heap; Message : in String) is
 
       procedure Check_Counts(Pointer : in Heap_Node_Access) is
       begin
@@ -115,19 +115,19 @@ package body Spica.Leftist_Heaps is
          Check_Counts(Pointer.Right_Child);
          if Pointer.Left_Child = null and Pointer.Right_Child = null then
             if Pointer.Count /= 1 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          elsif Pointer.Left_Child = null and Pointer.Right_Child /= null then
             if Pointer.Count /= Pointer.Right_Child.Count + 1 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          elsif Pointer.Left_Child /= null and Pointer.Right_Child = null then
             if Pointer.Count /= Pointer.Left_Child.Count + 1 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          else
             if Pointer.Count /= Pointer.Left_Child.Count + Pointer.Right_Child.Count + 1 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          end if;
       end Check_Counts;
@@ -139,13 +139,13 @@ package body Spica.Leftist_Heaps is
          Check_Path_Lengths(Pointer.Right_Child);
          if Pointer.Left_Child = null or Pointer.Right_Child = null then
             if Pointer.Null_Path_Length /= 0 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          else
             if Pointer.Left_Child.Null_Path_Length < Pointer.Right_Child.Null_Path_Length then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             elsif Pointer.Null_Path_Length /= Pointer.Right_Child.Null_Path_Length + 1 then
-               raise Heaps_Package.Inconsistent_Heap;
+               raise Heaps_Package.Inconsistent_Heap with Message;
             end if;
          end if;
       end Check_Path_Lengths;
@@ -156,10 +156,10 @@ package body Spica.Leftist_Heaps is
          Check_Heap_Property(Pointer.Left_Child);
          Check_Heap_Property(Pointer.Right_Child);
          if Pointer.Left_Child /= null and then Pointer.Left_Child.Data < Pointer.Data then
-            raise Heaps_Package.Inconsistent_Heap;
+            raise Heaps_Package.Inconsistent_Heap with Message;
          end if;
          if Pointer.Right_Child /= null and then Pointer.Right_Child.Data < Pointer.Data then
-            raise Heaps_Package.Inconsistent_Heap;
+            raise Heaps_Package.Inconsistent_Heap with Message;
          end if;
       end Check_Heap_Property;
 

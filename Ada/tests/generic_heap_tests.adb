@@ -6,7 +6,7 @@ package body Generic_Heap_Tests is
    procedure Test_Heap_Constructor is
       H : Heap;
    begin
-      H.Check_Sanity;
+      H.Check_Sanity("Invalid heap after default initialization");
       Assert(H.Size = 0, "Default heap has non-zero size");
    end Test_Heap_Constructor;
 
@@ -22,9 +22,9 @@ package body Generic_Heap_Tests is
    begin
       for I in Data_Index loop
          H.Insert(Test_Data(I));
-         H.Check_Sanity;
+         H.Check_Sanity("Invalid heap after inserting test data in Test_Heap_Insert");
          Assert(H.Size = I, "Invalid size after insert");
-         Assert(H.Top = Top_Data(I), "Invalid top element after insert");
+         Assert(H.Top_Priority = Top_Data(I), "Invalid top element after insert");
       end loop;
    end Test_Heap_Insert;
 
@@ -46,10 +46,10 @@ package body Generic_Heap_Tests is
 
       -- This loop is a little awkward in this case, but checks a common idiom.
       while H.Size > 0 loop
-         Assert(H.Top = Top_Data(Index), "Invalid top element before delete");
+         Assert(H.Top_Priority = Top_Data(Index), "Invalid top element before delete");
          Index := Index + 1;
-         H.Delete_Top;
-         H.Check_Sanity;
+         H.Delete_Top_Priority;
+         H.Check_Sanity("Invalid heap after deleting top priority item in Test_Heap_Delete");
       end loop;
    end Test_Heap_Delete;
 
