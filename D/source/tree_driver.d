@@ -18,7 +18,7 @@ import tree;
 void compare( int[] dump_result, int[] expected )
 {
     assert( dump_result.length == expected.length );
-    foreach( int i, int value; dump_result ) {
+    foreach( size_t i, int value; dump_result ) {
         assert( dump_result[i] == expected[i] );
     }
 }
@@ -40,7 +40,7 @@ void test_find( Tree!(int) my_tree, int[] contents )
 
 void check_erase( Tree!(int) my_tree, int[] erase_order, int[]* expected )
 {
-    foreach( int i, int value; erase_order ) {
+    foreach( size_t i, int value; erase_order ) {
         my_tree.erase( value );
         my_tree.check_sanity( );
         compare( my_tree.dump( ), expected[i] );
