@@ -1,6 +1,7 @@
 with Ada.Assertions;
 with Ada.Text_IO;
-with Sorters;
+
+with Spica.Sorters;
 
 use Ada.Assertions;
 use Ada.Text_IO;
@@ -12,12 +13,12 @@ package body Test_Sorters is
 
    -- Instatiate the required procedures...
    procedure Integer_Insertion_Sort is
-     new Sorters.Insertion_Sort
+     new Spica.Sorters.Insertion_Sort
        (Element_Type => Integer, Array_Type => Integer_Array);
 
    -- ... note that all legitimate elements have to be smaller than Integer'Last.
    procedure Integer_Merge_Sort is
-     new Sorters.Merge_Sort
+     new Spica.Sorters.Merge_Sort
        (Element_Type => Integer, Array_Type => Integer_Array, Infinity => Integer'Last);
 
    subtype Degenerate_Array is Integer_Array(1 .. 1);

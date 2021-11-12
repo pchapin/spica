@@ -1,7 +1,7 @@
 
-package body Sorters is
-   
-   
+package body Spica.Sorters is
+
+
    -- This follows the pseudo-code on page 18 of CLRS.
    procedure Insertion_Sort(A : in out Array_Type) is
       I   : Natural;
@@ -20,8 +20,8 @@ package body Sorters is
          A(I + 1) := Key;
       end loop;
    end Insertion_Sort;
-   
-   
+
+
    -- This follows the pseudo-code on page 31 of CLRS.
    procedure Merge_Sort(A : in out Array_Type; P, R : Positive) is
 
@@ -62,4 +62,4 @@ package body Sorters is
       end if;
    end Merge_Sort;
 
-end Sorters;
+end Spica.Sorters;

@@ -1,5 +1,5 @@
 
-package Sorters is
+package Spica.Sorters is
 
    generic
       type Element_Type is private;
@@ -16,4 +16,4 @@ package Sorters is
    procedure Merge_Sort(A : in out Array_Type; P, R : Positive)
      with Pre => A'First = 1;
 
-end Sorters;
+end Spica.Sorters;
