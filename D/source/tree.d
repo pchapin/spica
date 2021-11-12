@@ -23,7 +23,7 @@ class Tree(T) {
                 Node right;
                 Node parent;
                 T    data;
-        };
+        }
 
         Node  root;
         uint  count;
