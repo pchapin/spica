@@ -110,6 +110,7 @@ package body Spica.RedBlack_Trees is
          -- If the key already exists, replace the value and we are done.
          if Key = X.Key then
             X.Value := Value;
+            Deallocate_Node(Z);
             return;
          end if;
 
