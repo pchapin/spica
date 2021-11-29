@@ -101,7 +101,7 @@ package body Spica.RedBlack_Trees is
    procedure Insert(T : in out RedBlack_Tree; Key : in Key_Type; Value : in Value_Type) is
       X : Tree_Node_Access;
       Y : Tree_Node_Access;
-      Z : Tree_Node_Access := new Tree_Node'(Key, Value, Red, others => <>);
+      Z : Tree_Node_Access;
    begin
       Y := T.Nil;
       X := T.Root;
@@ -110,7 +110,6 @@ package body Spica.RedBlack_Trees is
          -- If the key already exists, replace the value and we are done.
          if Key = X.Key then
             X.Value := Value;
-            Deallocate_Node(Z);
             return;
          end if;
 
@@ -122,6 +121,9 @@ package body Spica.RedBlack_Trees is
             X := X.Right_Child;
          end if;
       end loop;
+
+      -- Y now points at the node to which we must attached the new node (or it is T.Nil).
+      Z := new Tree_Node'(Key, Value, Red, others => <>);
       Z.Parent := Y;
       if Y = T.Nil then
          T.Root := Z;
@@ -241,7 +243,7 @@ package body Spica.RedBlack_Trees is
    end RedBlack_Delete_Fixup;
 
 
-   -- TODO: Finish Me!
+   -- TODO: Fix memory leak! Call Deallocate_Node at the appropriate place(s).
    procedure Delete(T : in out RedBlack_Tree; Key : in Key_Type) is
 
       function Search_For_Key(Key : in Key_Type) return Tree_Node_Access is
