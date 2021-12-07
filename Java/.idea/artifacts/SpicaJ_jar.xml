@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SpicaJ:jar">
+    <output-path>$PROJECT_DIR$/build/artifacts/SpicaJ_jar</output-path>
+    <root id="archive" name="SpicaJ.jar">
+      <element id="module-output" name="SpicaJ" />
+      <element id="module-test-output" name="SpicaJ" />
+    </root>
+  </artifact>
+</component>
