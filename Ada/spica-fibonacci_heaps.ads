@@ -73,6 +73,8 @@ private
    type Node is
       record
          Key           : Key_Type;
+         Degree        : Natural := 0;
+         Mark          : Boolean := False;
          Parent        : Node_Access;
          Left_Sibling  : Node_Access;
          Right_Sibling : Node_Access;
