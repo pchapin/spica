@@ -1,8 +1,8 @@
 ############################################################################
 # FILE   : master.mif
-# AUTHOR : Peter C. Chapin <PChapin@vtc.vsc.edu>
+# AUTHOR : Peter C. Chapin <peter@pchapin.org>
 #
-# Master file list for the SpicaC project.
+# Open Watcom master file list for the SpicaC project.
 ############################################################################
 
 c_options = -q -w4 -fo=$*.obj -I..\..
@@ -19,7 +19,7 @@ OBJS = &
 
 # Main target
 SpicaC.lib: $(OBJS)
-    wlib -q -n SpicaC.lib @../../SpicaC.cds
+    wlib -q -n SpicaC.lib @SpicaC.cds
 
 # Utility targets.    
 clean: .SYMBOLIC

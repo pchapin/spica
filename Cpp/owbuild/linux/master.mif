@@ -1,8 +1,8 @@
 ############################################################################
 # FILE   : master.mif
-# AUTHOR : Peter C. Chapin <PChapin@vtc.vsc.edu>
+# AUTHOR : Peter C. Chapin <peter@pchapin.org>
 #
-# Master file list for the SpicaCpp project.
+# Open Watcom master file list for the SpicaCpp project.
 ############################################################################
 
 cpp_options = -q -w4 -xs -fo=$*.obj -I../..
@@ -12,14 +12,12 @@ OBJS = &
     base64.obj          &
     crc.obj             &
     get_switch.obj      &
-    regkey.obj          &
-    synchronize.obj     &
     Timer.obj           &
     UnitTestManager.obj
 
 # Main target
 SpicaCpp.lib: $(OBJS)
-    wlib -q -n SpicaCpp.lib @../../SpicaCpp.cds
+    wlib -q -n SpicaCpp.lib @SpicaCpp.cds
 
 # Utility targets.    
 clean: .SYMBOLIC
