@@ -5,7 +5,7 @@ package body Spica.Graph_Algorithms is
    use type Ada.Containers.Count_Type;
 
    function Breadth_First_Search
-     (G : Graph; Start_Vertex : Vertex_Number_Type) return Vertex_Tree
+     (G : Graph; Start_Vertex : Vertex_Number_Type) return BFS_Vertex_Tree
    is
       -- We need a queue of vertex numbers...
       package Vertex_Number_Lists is
@@ -19,7 +19,7 @@ package body Spica.Graph_Algorithms is
       Vertex_Colors : array(1 .. Size(G)) of Color_Type;
 
       -- The result we want to return: distance and predecessors of every vertex.
-      Result : Vertex_Tree(1 .. Size(G));
+      Result : BFS_Vertex_Tree(1 .. Size(G));
    begin
       -- Initialize...
       Vertex_Colors := (others => White);
@@ -47,5 +47,21 @@ package body Spica.Graph_Algorithms is
 
       return Result;
    end Breadth_First_Search;
+
+
+   procedure Depth_First_Search
+     (G : in Graph; Trees : out DFS_Vertex_Trees; Has_Cycle : out Boolean) is
+   begin
+      -- TODO: Finish me!
+      null;
+   end Depth_First_Search;
+
+
+   procedure Topological_Sort
+     (G : in Graph; Sequence : out Vertex_Sequence; Is_DAG : out Boolean) is
+   begin
+      -- TODO: Finish me!
+      null;
+   end Topological_Sort;
 
 end Spica.Graph_Algorithms;
