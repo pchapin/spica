@@ -1,11 +1,10 @@
 /*! \file    spica.hpp
-    \brief   List template that preallocates memory.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-To simplify use of the Spica library this header is provided. It includes all other Spica
-headers. Simply include spica.h in your project to access any spica related component.
-Precompilation of this header is recommended.
-*/
+ *  \brief   The master header file for the Spica C++ library.
+ *  \author  Peter C. Chapin <pchapin@vtc.edu>
+ *
+ * To simplify use of the Spica library this header is provided. It includes all other Spica
+ * headers. Simply include spica.hpp in your project to access any spica related component.
+ */
 
 #ifndef SPICA_HPP
 #define SPICA_HPP

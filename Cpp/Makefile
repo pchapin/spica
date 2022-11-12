@@ -6,7 +6,7 @@ CXX=g++
 CXXFLAGS=-std=c++11 -Wall -c -O
 LINK=ar
 LINKFLAGS=rc
-SOURCES=base64.cpp           \
+SOURCES=base64.cpp       \
 	BitFile.cpp          \
 	config.cpp           \
 	crc.cpp              \
@@ -25,6 +25,7 @@ LIBRARY=libSpicaCpp.a
 	$(CXX) $(CXXFLAGS) $< -o $@
 	
 all:	$(LIBRARY)
+	(cd check; make all)
 
 $(LIBRARY):	$(OBJECTS)
 	$(LINK) $(LINKFLAGS) -o $@ $(OBJECTS)
@@ -62,3 +63,4 @@ VeryLong.o:	VeryLong.cpp VeryLong.hpp
 ##################
 clean:
 	rm -f *.bc *.o $(LIBRARY) *.s *.ll *~
+	(cd check; make clean)
