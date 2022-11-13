@@ -34,6 +34,7 @@ Cpp/SpicaCpp.lib
 C/libSpicaC.a
 C/check/CheckC
 Cpp/libSpicaCpp.a
+Cpp/check/u_tests
 
 # LaTeX generated files.
 *.aux
