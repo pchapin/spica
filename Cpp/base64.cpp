@@ -1,6 +1,6 @@
 /*! \file base64.c
     \brief Base64 encoding functions.
-    \author Peter C. Chapin <Peter.Chapin@vtc.vsc.edu>
+    \author Peter C. Chapin <chapinp@proton.me>
     \date November 11, 2007
     \warning This code has not been extensively tested!
 

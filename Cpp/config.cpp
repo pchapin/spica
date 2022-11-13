@@ -1,6 +1,6 @@
 /*! \file    config.cpp
  *  \brief   Implementation of a simple configuration management module.
- *  \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+ *  \author  Peter Chapin <chapinp@proton.me>
  */
 
 #include <fstream>

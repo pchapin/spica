@@ -1,13 +1,13 @@
 /*! \file    BinaryTree.hpp
-    \brief   Binary tree template.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-TODO:
-
- + Implement operator--() for iterators.
- + Implement reverse iterators.
- + Implement the copy constructor and operator=()
-*/
+ *  \brief   Binary tree template.
+ *  \author  Peter Chapin <chapinp@proton.me>
+ *
+ * TODO:
+ *
+ * + Implement operator--() for iterators.
+ * + Implement reverse iterators.
+ * + Implement the copy constructor and operator=()
+ */
 
 #ifndef BINARYTREE_H
 #define BINARYTREE_H

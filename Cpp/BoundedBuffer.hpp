@@ -1,6 +1,6 @@
 /*! \file    BoundedBuffer.hpp
  *  \brief   Interface to a bounded buffer template.
- *  \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+ *  \author  Peter Chapin <chapinp@proton.me>
  */
 
 #ifndef BOUNDEDBUFFER_HPP

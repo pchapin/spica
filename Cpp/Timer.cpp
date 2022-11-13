@@ -1,8 +1,7 @@
 /*! \file    Timer.cpp
-    \brief   Implementation of a simple timer class.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-*/
+ *  \brief   Implementation of a simple timer class.
+ *  \author  Peter Chapin <chapinp@proton.me>
+ */
 
 #include <cstddef>
 #include "Timer.hpp"

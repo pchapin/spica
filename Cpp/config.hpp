@@ -1,6 +1,6 @@
 /*! \file    config.hpp
  *  \brief   Interface to a simple configuration management module.
- *  \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+ *  \author  Peter Chapin <chapinp@proton.me>
  *
  * This module simplifies the task of fetching and using configurable parameters.
  */

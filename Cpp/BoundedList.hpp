@@ -1,6 +1,6 @@
 /*! \file    BoundedList.hpp
  *  \brief   List template that preallocates memory.
- *  \author  Peter C. Chapin <chapinp@acm.org>
+ *  \author  Peter Chapin <chapinp@acm.org>
  *
  * Bounded lists allocate a block of memory when they are constructed and will only use that
  * allocated block. Thus if construction is successful they will never run out of memory

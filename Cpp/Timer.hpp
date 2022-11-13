@@ -1,8 +1,7 @@
 /*! \file    Timer.hpp
-    \brief   Interface to a simple timer class.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-*/
+ *  \brief   Interface to a simple timer class.
+ *  \author  Peter Chapin <chapinp@proton.me>
+ */
 
 #ifndef TIMER_HPP
 #define TIMER_HPP

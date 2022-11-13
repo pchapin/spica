@@ -1,6 +1,6 @@
 /*! \file    BitFile.hpp
  *  \brief   A class that allows I/O of a file on a bit-by-bit basis.
- *  \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
+ *  \author  Peter Chapin <chapinp@proton.me>
  */
 
 #ifndef BITFILE_HPP

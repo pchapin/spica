@@ -1,20 +1,20 @@
 /*! \file    environ.hpp
-    \brief   Defines the compilation and the target environments.
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-This file contains settings that define the environment in which the program was compiled and
-the environment where it runs. This file should be included into source files that need to
-distinguish one environment from another. Conditional compliation directives can then be used to
-select appropriate code for each environment.
-
-I find it easier to use the symbols defined in this file than it is to use the symbols defined
-by the various individual compilers. The symbols here are more consistent and more natural.
-However, it is my intention for this file to use the compiler specific symbols to automatically
-set appropriate values for the symbols defined here whenever possible.
-
-Each symbol defined here is prefixed with 'e' (for "environment"). This is done because several
-of the symbol names are fairly generic and they tend to collide with similarly named symbols in
-other libraries.
+ *  \brief   Defines the compilation and the target environments.
+ *  \author  Peter Chapin <chapinp@proton.me>
+ *
+ * This file contains settings that define the environment in which the program was compiled and
+ * the environment where it runs. This file should be included into source files that need to
+ * distinguish one environment from another. Conditional compliation directives can then be used
+ * to select appropriate code for each environment.
+ *
+ * I find it easier to use the symbols defined in this file than it is to use the symbols
+ * defined by the various individual compilers. The symbols here are more consistent and more
+ * natural. However, it is my intention for this file to use the compiler specific symbols to
+ * automatically set appropriate values for the symbols defined here whenever possible.
+ *
+ * Each symbol defined here is prefixed with 'e' (for "environment"). This is done because
+ * several of the symbol names are fairly generic and they tend to collide with similarly named
+ * symbols in other libraries.
 */
 
 #ifndef ENVIRON_HPP

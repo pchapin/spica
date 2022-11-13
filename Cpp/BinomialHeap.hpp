@@ -1,11 +1,11 @@
 /*! \file    BinomialHeap.hpp
-    \brief   Binomial heap container template
-    \author  Peter C. Chapin <PChapin@vtc.vsc.edu>
-
-TODO:
-
- + Implement the DELETE and "DECREASE"-KEY operations.
-*/
+ *  \brief   Binomial heap container template
+ *  \author  Peter Chapin <chapinp@proton.me>
+ *
+ * TODO:
+ *
+ * + Implement the DELETE and "DECREASE"-KEY operations.
+ */
 
 #ifndef BINOMIALHEAP_H
 #define BINOMIALHEAP_H
