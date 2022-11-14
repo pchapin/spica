@@ -5,7 +5,7 @@
 CXX=g++
 CXXFLAGS=-std=c++11 -Wall -c -O
 LINK=ar
-LINKFLAGS=rc
+LINKFLAGS=-r -c
 SOURCES=base64.cpp       \
 	BitFile.cpp          \
 	config.cpp           \
@@ -28,7 +28,7 @@ all:	$(LIBRARY)
 	(cd check; make all)
 
 $(LIBRARY):	$(OBJECTS)
-	$(LINK) $(LINKFLAGS) -o $@ $(OBJECTS)
+	$(LINK) $(LINKFLAGS) $@ $(OBJECTS)
 
 # File Dependencies
 ###################
