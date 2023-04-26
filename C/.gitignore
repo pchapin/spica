@@ -23,18 +23,15 @@ owbuild
 *.lb1
 *.mk
 *.mk1
-C/SpicaC.lib
-Cpp/SpicaCpp.lib
+SpicaC.lib
 
 # LLVM generated files.
 *.bc
 
 # gcc generated files.
 *.o
-C/libSpicaC.a
-C/check/CheckC
-Cpp/libSpicaCpp.a
-Cpp/check/u_tests
+libSpicaC.a
+check/CheckC
 
 # LaTeX generated files.
 *.aux
