@@ -51,7 +51,8 @@
 #define eCOMPILER eCOMPAQ
 #endif
 
-#if defined(__GNUC__)
+// Clang also defines __GNUC__. Make sure we don't get confused.
+#if defined(__GNUC__) && !defined(__clang__)
 #define eCOMPILER eGCC
 #endif
 
