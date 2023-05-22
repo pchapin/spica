@@ -4,7 +4,7 @@
  *
  * This file contains settings that define the environment in which the program was compiled and
  * the environment where it runs. This file should be included into source files that need to
- * distinguish one environment from another. Conditional compliation directives can then be used
+ * distinguish one environment from another. Conditional compilation directives can then be used
  * to select appropriate code for each environment.
  *
  * I find it easier to use the symbols defined in this file than it is to use the symbols
@@ -31,19 +31,20 @@
 
 // The following are the allowed values of eCOMPILER.
 #define eVANILLA     1  // Generic, Standard C++ only
-#define eBORLAND     2  // Borland C++
+#define eCLANG       2  // clang++
 #define eCOMPAQ      3  // Compaq C++
-#define eGCC         4  // gcc
+#define eGCC         4  // g++
 #define eIBM         5  // IBM's Visual Age C++
 #define eMETROWERKS  6  // Metrowerks CodeWarrior
 #define eMICROSOFT   7  // Microsoft Visual C++
 #define eOPENWATCOM  8  // Open Watcom
+// TODO: What about Intel's compiler?
 
 // Choose your compiler! This file can autodetect all of the compilers mentioned above. If the
-// compiler can't be autodetected it will default to eVANILLA.
+// compiler can't be automatically detected it will default to eVANILLA.
 
-#if defined(__BORLANDC__)
-#define eCOMPILER eBORLAND
+#if defined(__clang__)
+#define eCOMPILER eCLANG
 #endif
 
 #if defined(__DECCXX)
@@ -81,38 +82,36 @@
 //-------------------------------------
 
 // The following are the allowed values of eOPSYS.
-#define eMAC     1  // MacOS.
-#define eDOS     2  // DOS and its variations.
+#define eDOS     1  // DOS and its variations.
+#define eMAC     2  // macOS (modern system).
 #define eNETWARE 3  // NetWare NLM. Assume v4.x or higher (NDS support).
 #define eOS2     4  // OS/2 (32 bit only).
 #define ePOSIX   5  // POSIX is intended to support all Unix flavors.
 #define eVMS     6  // DEC's VMS operating system.
-#define eWIN32   7  // WinNT/2000/XP/Vista/7 only. Win95/98/Me are obsolete.
+#define eWIN32   7  // Windows NT+ only. Win95/98/Me are obsolete.
 
 // Choose your operating system! In most cases this file can autodetect the operating system
 // from the compiler that is being used. If that is not the case, you will have to specify the
 // operating system if it matters. There is no default.
 
-// Borland supports MS-DOS and Win32 programming.
-#if eCOMPILER == eBORLAND
-#if defined(__MSDOS__)
-#define eOPSYS eDOS
-#elif defined(__WIN32__)
-#define eOPSYS eWIN32
-#endif
+// Assume that clang++ is on a Unix-like system.
+#if eCOMPILER == eCLANG
+#define eOPSYS ePOSIX
 #endif
 
-// Assume that Compaq C++ is on Unix. Is this assumption safe? (What of VMS?)
+// Assume that Compaq C++ is on a Unix-like system. Is this assumption safe? (What of VMS?)
+// TODO: Is Compaq C++ still supported? I doubt it.
 #if eCOMPILER == eCOMPAQ
 #define eOPSYS ePOSIX
 #endif
 
-// Assume gcc is on Unix (or at least something Unix-like).
+// Assume g++ is on a Unix-like system.
 #if eCOMPILER == eGCC
 #define eOPSYS ePOSIX
 #endif
 
 // Visual Age C++ supports OS/2 and Win32 programming.
+// TODO: Is Visual Age C++ still supported? IBM appears to be using "IBM OpenXL C/C++."
 #if eCOMPILER == eIBM
 #if defined(__TOS_OS2__)
 #define eOPSYS eOS2
@@ -122,6 +121,7 @@
 #endif
 
 // CodeWarrior supports Mac and Win32 programming.
+// TODO: CodeWarrior no longer supports either of the above platforms. What now?
 #if eCOMPILER == eMETROWERKS
 #if defined(macintosh)
 #define eOPSYS eMAC
@@ -161,12 +161,10 @@
 // The following are the allowed values of eGUI.
 #define eNONE   1   // Text mode application.
 #define ePM     2   // The OS/2 graphical interface. This also implies WPS.
-#define eWIN    3   // Windows NT or Windows 95/98. (16 bit Windows ignored).
+#define eWIN    3   // Windows NT+ only.
 #define eXWIN   4   // X Windows.
 
 // Choose your GUI. This file does not currently autodetect any GUI. The default GUI is eNONE.
-// Note that if the operating system is eMAC its native GUI can be assumed. That is not the case
-// for the other operating systems since they support text mode applications as an option.
 
 #if !defined(eGUI)
 #define eGUI eNONE
@@ -190,11 +188,13 @@
 // The symbol eMULTITHREADED will be defined in all such cases. This file can auto-detect this
 // feature in some but not all cases.
 //
+// TODO: Eliminate the need for eMULTITHREADED? Isn't it just the default now?
+//
 // Note that if eMULTITHREADED is defined when eOPSYS is ePOSIX, Posix threads are implied. If
-// eOPSYS is eWIN32, Windows threads are implied.
+// eOPSYS is eWIN32, Windows threads are implied. If eOPSYS is eOS2, OS/2 threads are implied.
 //
 
-#if eCOMPILER == eBORLAND && defined(__MT__)
+#if eCOMPILER == eClang
 #define eMULTITHREADED
 #endif
 
