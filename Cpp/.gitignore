@@ -10,9 +10,6 @@ obj
 *.depend
 *.layout
 
-# Eclipse user-specific settings.
-.settings
-
 # depend generated files.
 depend.out
 
@@ -35,6 +32,7 @@ SpicaCpp.lib
 *.o
 libSpicaCpp.a
 check/u_tests
+check/u_tests.exe
 
 # LaTeX generated files.
 *.aux
