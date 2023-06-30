@@ -38,3 +38,11 @@ check/u_tests.exe
 *.aux
 *.log
 *.pdf
+
+# Eclipse files.
+
+# There is controversy about this file. It includes a hash of the environment that
+# is unique to each developer's system. However, it also includes some items that
+# probably should be shared between developers. See:
+# https://www.eclipse.org/forums/index.php/t/1074031/
+.settings/language_settings.xml
