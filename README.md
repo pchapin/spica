@@ -14,10 +14,6 @@ the future with a minimum of difficulty. Also a user interested in only one libr
 one language) can focus on the folder containing that library alone and ignore the other folders
 entirely.
 
-The build control files in this top level folder (`Spica.sln`, `Spica.workspace`, and
-`Spica.wpj`) build both the C and C++ libraries. This seems reasonable given the special
-relationship between those languages.
-
 The web pages in the top level folder are Spica-wide documentation files. They mostly provide
 links to, and summaries of, the documentation available in each language subfolder.
 
