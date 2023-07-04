@@ -14,6 +14,9 @@ the future with a minimum of difficulty. Also a user interested in only one libr
 one language) can focus on the folder containing that library alone and ignore the other folders
 entirely.
 
+Note that the [Spica C++ library](https://github.com/pchapin/spicacpp) is, in fact, currently in
+a separate repository.
+
 The web pages in the top level folder are Spica-wide documentation files. They mostly provide
 links to, and summaries of, the documentation available in each language subfolder.
 
