@@ -16,8 +16,9 @@ entirely.
 
 The following sub-libraries are in separate repositories:
 
-+ The [Spica C++ library](https://github.com/pchapin/spicacpp).
 + The [Spica Ada library](https://github.com/pchapin/spicaada)
++ The [Spica C library](https://github.com/pchapin/spicac)
++ The [Spica C++ library](https://github.com/pchapin/spicacpp)
 
 The web pages in the top level folder are Spica-wide documentation files. They mostly provide
 links to, and summaries of, the documentation available in each language subfolder.

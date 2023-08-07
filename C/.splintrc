@@ -1,5 +1,0 @@
-#-I\cygwin\usr\include
--sys-dirs \WATCOM\H # I'm not sure if this is really necessary.
-#-load splintlib    # See splintlib.h for instructions about building/rebuilding this file.
--DNULL=((void*)0)   # Not sure why this is needed. Header file problem?
--exportlocal        # Don't warn about exported functions that aren't used.
