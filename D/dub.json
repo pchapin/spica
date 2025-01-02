@@ -1,8 +1,0 @@
-{
-    "name": "spicad",
-    "targetType": "executable",
-    "description": "D Components of the Spica Library",
-    "authors": [ "Peter Chapin" ],
-    "copyright": "Copyright © 2021, Peter Chapin",
-    "license": "proprietary"
-}
