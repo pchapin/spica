@@ -3,14 +3,14 @@ Spica
 =====
 
 Spica is a library of libraries of algorithms and data structures, along with some additional,
-occasionaly useful components. It is intended primarily to be educational but it is also my hope
-that some of the components developed here could be useful in real programs.
+occasionally useful components. It is intended primarily to be educational, but it is also my
+hope that some of the components developed here could be useful in real programs.
 
 The libraries are divided by language with each language being in its own subfolder. The
 individual libraries are intended to be largely self-contained. Each library is documented
 separately, tested separately, and contains independent build control files, licenses,
 .gitignore files, etc. This is so each library could become a separate project in the future
-with a minimum of difficulty. Also a user interested in only one library (i.e., only one
+with a minimum of difficulty. Also, a user interested in only one library (i.e., only one
 language) can focus on the folder containing that library alone and ignore the other folders
 entirely.
 
