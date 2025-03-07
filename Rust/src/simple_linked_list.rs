@@ -99,11 +99,7 @@ where
         if &self.value == value {
             Some(0)
         } else if let Some(next) = &self.next {
-            if let Some(ix) = next.index_of(value) {
-                Some(ix + 1)
-            } else {
-                None
-            }
+            next.index_of(value).map(|x| x + 1)
         } else {
             None
         }
@@ -144,8 +140,8 @@ impl<T: Display> Display for LinkedList<T> {
         write!(f, "[{}", self.value)?;
         let mut link = self;
         while let Some(ll) = &link.next {
-            write!(f, ",{}", ll.value)?;
-            link = &ll;
+            write!(f, ", {}", ll.value)?;
+            link = ll;
         }
         write!(f, "]")
     }
