@@ -1,0 +1,40 @@
+Write a rust library to support a simple binary search tree as a map. This type should map from
+a key type to a value type, much like the java Map or rust's HashMap or BTreeMap.
+
+Everyone should include at least the following functions/methods:
+
+[ ] new: create a new empty map
+
+[ ] insert: insert a key value pair into the map, replacing the value if necessary
+
+[ ] insert_or: insert a key value pair if not already present or run the function that is passed
+in to update the value already associated with the key. The function should be an update in
+place function, meaning it takes an &mut T and a T (or whatever you call your tree parameter) as
+its arguments, with nothing returned.
+
+[ ] contains_key: return a bool indicating whether the indicated key is present in the map
+
+[ ] get: get a reference to the value associated with a passed in key, returning None if not
+found
+
+[ ] get_mut: get a mut reference to the value associated with a passed in key, returning None if
+not found
+
+[ ] clear: completely empty the tree
+
+[ ] first_key_value: return references to the first key, value pair (smallest key) as a tuple
+(or None if the tree is empty)
+
+[ ] last_key_value: return references to the last key, value pair (largest key) as a tuple (or
+None if the tree is empty)
+
+[ ] is_empty: return true if the tree is empty
+
+[ ] len: return the number of pairs in the tree
+
+[ ] You should also support the Index, Debug and Display traits
+
+[ ] Optionally, you can also support any of remove, remove_first, remove_last and one or both
+non-mut flavors of iterator. Or you can support the Default trait.
+
+Like the second list implementation, you will want at least two types, only one of which is pub.

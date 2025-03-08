@@ -12,8 +12,8 @@ pub struct LinkedList<T> {
 }
 
 impl<T> LinkedList<T> {
-    pub fn new(value: T) -> Box<Self> {
-        Box::new(LinkedList { value, next: None })
+    pub fn new(new_value: T) -> Box<Self> {
+        Box::new(LinkedList { value: new_value, next: None })
     }
 
     pub fn head(&self) -> &T {
@@ -24,12 +24,12 @@ impl<T> LinkedList<T> {
         &self.next
     }
 
-    pub fn get(&self, i: u32) -> Option<&T> {
-        if i == 0 {
+    pub fn get(&self, index: u32) -> Option<&T> {
+        if index == 0 {
             return Some(&self.value);
         }
-        if let Some(next) = &self.next {
-            return next.get(i - 1);
+        if let Some(next_list) = &self.next {
+            return next_list.get(index - 1);
         }
         None
     }
@@ -39,42 +39,46 @@ impl<T> LinkedList<T> {
     }
 
     pub fn len(&self) -> u32 {
-        if let Some(next) = &self.next {
-            1 + next.len()
+        if let Some(next_list) = &self.next {
+            1 + next_list.len()
         } else {
             1
         }
     }
 
-    pub fn add_end(&mut self, value: T) {
-        if let Some(next) = &mut self.next {
-            next.add_end(value)
+    pub fn add_end(&mut self, new_value: T) {
+        if let Some(next_list) = &mut self.next {
+            next_list.add_end(new_value)
         } else {
-            self.next = Some(LinkedList::new(value))
+            self.next = Some(LinkedList::new(new_value))
         }
     }
 
-    pub fn insert_first(self, value: T) -> Box<Self> {
+    pub fn insert_first(self, new_value: T) -> Box<Self> {
         Box::new(LinkedList {
-            value,
+            value: new_value,
             next: Some(Box::new(self)),
         })
     }
 
-    pub fn insert(mut list: Box<Self>, value: T, index: u32) -> Result<Box<Self>, String> {
+    // This function has a weird interface. It would be more natural as a method with &mut self.
+    pub fn insert(mut list: Box<Self>, new_value: T, index: u32) -> Result<Box<Self>, String> {
         if index == 0 {
-            Ok(list.insert_first(value))
-        } else if let Some(next) = list.next {
-            list.next = Some(LinkedList::insert(next, value, index - 1)?);
+            Ok(list.insert_first(new_value))
+        } else if let Some(next_list) = list.next {
+            list.next = Some(LinkedList::insert(next_list, new_value, index - 1)?);
             Ok(list)
         } else if index == 1 {
-            list.next = Some(LinkedList::new(value));
+            list.next = Some(LinkedList::new(new_value));
             Ok(list)
         } else {
             Err(String::from("out of bounds in list insert"))
         }
     }
 
+    // These removal methods are also a little awkward. Probably this awkwardness arises because
+    // this implementation stores node data directly inside the LinkedList structure rather than
+    // useing an auxillary Node structure as is more typically done.    
     pub fn remove_first(self) -> (T, Option<Box<LinkedList<T>>>) {
         (self.value, self.next)
     }
@@ -98,18 +102,18 @@ where
     pub fn index_of(&self, value: &T) -> Option<u32> {
         if &self.value == value {
             Some(0)
-        } else if let Some(next) = &self.next {
-            next.index_of(value).map(|x| x + 1)
+        } else if let Some(next_list) = &self.next {
+            next_list.index_of(value).map(|x| x + 1)
         } else {
             None
         }
     }
 
     pub fn remove_value(mut node: Box<Self>, value: T) -> Result<Option<Box<Self>>, String> {
-        if &node.value == &value {
+        if node.value == value {
             Ok(node.next)
-        } else if let Some(next) = node.next {
-            node.next = LinkedList::remove_value(next, value)?;
+        } else if let Some(next_list) = node.next {
+            node.next = LinkedList::remove_value(next_list, value)?;
             Ok(Some(node))
         } else {
             Err(String::from("could not find value to remove"))
@@ -120,9 +124,9 @@ where
 impl<T: PartialEq> PartialEq for LinkedList<T> {
     fn eq(&self, other: &Self) -> bool {
         if self.value == other.value {
-            if let Some(next) = &self.next {
-                if let Some(onext) = &other.next {
-                    next == onext
+            if let Some(next_list) = &self.next {
+                if let Some(other_next_list) = &other.next {
+                    next_list == other_next_list
                 } else {
                     false
                 }
@@ -239,7 +243,7 @@ mod tests {
         let mut ll = LinkedList::new(1);
         assert_eq!(format!("{ll}"), "[1]");
         ll.add_end(2);
-        assert_eq!(format!("{ll}"), "[1,2]");
+        assert_eq!(format!("{ll}"), "[1, 2]");
     }
 
     #[test]
