@@ -1,0 +1,127 @@
+North America 5
+  Alaska
+  Alberta
+    : Alaska
+  Central America
+  Eastern United States
+  Greenland
+  Northwest Territory
+    : Alaska
+    : Alberta
+    : Greenland
+  Ontario
+    : Alberta
+    : Eastern United States
+    : Greenland
+    : Northwest Territory
+  Quebec
+    : Eastern United States
+    : Greenland
+    : Ontario
+  Western United States
+    : Alberta
+    : Central America
+    : Eastern United States
+    : Ontario
+South America 2
+  Argentina
+  Brazil
+    : Argentina
+  Peru
+    : Argentina
+    : Brazil
+  Venezuela
+    : Brazil
+    : Central America
+    : Peru
+Europe 5
+  Great Britain
+  Iceland
+    : Greenland
+    : Great Britain
+  Northern Europe
+  	: Great Britain
+  Scandinavia
+  	: Great Britain
+  	: Iceland
+  	: Northern Europe
+  Southern Europe
+  	: Northern Europe
+  Ukraine
+  	: Northern Europe
+  	: Scandinavia
+  	: Southern Europe
+  Western Europe
+  	: Great Britain
+  	: Northern Europe
+  	: Southern Europe
+Africa 3
+  Congo
+  East Africa
+  	: Congo
+  Egypt
+  	: Southern Europe
+  Madagascar
+  	: East Africa
+  North Africa
+    : Brazil
+    : Southern Europe
+    : Western Europe
+    : Congo
+    : East Africa
+    : Egypt
+  South Africa
+    : Congo
+    : East Africa
+  	: Madagascar
+Asia 7
+  Afghanistan
+  	: Ukraine
+  China
+  	: Afghanistan
+  India
+  	: Afghanistan
+  	: China
+  Irkutsk
+  Japan
+  Kamchatka
+    : Alaska
+    : Irkutsk
+    : Japan
+  Middle East
+  	: Southern Europe
+  	: Ukraine
+  	: Egypt
+  	: Afghanistan
+  	: India
+  Mongolia
+  	: China
+  	: Irkutsk
+  	: Japan
+  Siam
+  	: China
+  	: India
+  Siberia
+  	: China
+  	: Irkutsk
+  	: Mongolia
+  Ural
+  	: Ukraine
+  	: Afghanistan
+  	: China
+  	: Siberia
+  Yakutsk
+  	: Irkutsk
+  	: Kamchatka
+  	: Siberia
+Australia 2
+  Eastern Australia
+  Indonesia
+  	: Siam
+  New Guinea
+  	: Eastern Australia
+  	: Indonesia
+  Western Australia
+  	: Eastern Australia
+  	: Indonesia
+  	: Siam

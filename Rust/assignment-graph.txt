@@ -1,0 +1,74 @@
+This assignment will create a single project with both a library and a binary (an executable).
+
+The library supports an unweighted, directed graph. It should make use of the std library Rc and
+RefCell types appropriately. Each node in the graph has both a label (never able to change) and
+a value, which can be updated with some of the methods below. The type of these should be
+described by parameterizing the graph type. Note that the label type will need to implement Eq.
+
+The library methods include at least
+
+[ ] new() takes no args and returns a graph
+
+[ ] num_nodes returns the number of nodes in the graph
+
+[ ] add_node takes the new label and value for a node. It should fail if the label already
+    exists.
+
+[ ] connect_nodes takes two labels and makes a one-way connection between them. This should
+    return false if the connection already exists
+
+[ ] join_nodes is similar to connect_nodes, but makes a two-way connection (an edge each
+    way)
+  
+[ ] any_neighbor takes a label describing a starting point and a boolean function that takes
+    the starting node value and a neighbor
+
+        (Fn(&T,&T)->bool) that indicates where a neighbor is of interest.
+
+    This function returns true iff at least one neighbor (directly reachable from this) has the
+    given property.
+
+[ ] max_neighbor_by_key takes a starting node (described by its label) and a function that
+    extracts a key from the value.
+
+[ ] max_neighbor_by_key returns None if there are no neighbors or reference to the label
+    (wrapped in a Some)
+
+[ ] update_node takes a label describing a node and a function that will allow the called to
+    update the value in the node.
+
+
+Application part
+
+Your application will support a few aspects of the board game Risk.
+
+You should be able to create the graph representing the board. The data necessary to do this can
+be found in risk_board.txt.
+
+Lines without an indent represent continents, with the name and the value of the continent on
+the line (separated by a single space).
+
+Simple indented lines are the names of territories. Each one of these should become a node. Each
+territory knows what continent they are part of and each continent should know the names of all
+their countries.
+    
+Lines indented starting with a colon indicate the names of neighboring territories. All risk
+edges are two-way connections.
+
+The file guarantees that there are no forward references in these adjacent countries   
+
+For example, the file starts
+
+North America 5
+  Alaska
+  Alberta
+    : Alaska
+
+North America is the name of a continent, whose value is 5. Alaska and Alberta are territories
+in North America which are neighbors.
+
+Your program must create a valid risk board, but you can hard code this or read the info in from
+the file.
+
+Your program should also allow armies to be added to the board one at a time. Each army is
+associated with a player and all armies on a given territory must belong to the same player.
